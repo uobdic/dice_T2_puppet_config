@@ -1,8 +1,13 @@
-class site::basic {
+class site::basic (
+  $cluster = $site::params::cluster,
+) inherits site::params {
+  
   package {'puppet':
     ensure => installed,
   }
-  
+  #############################
+  #to be moved to puppet module
+  #############################
   service {'puppet':
     ensure => "running",
     enable => true,
@@ -28,5 +33,22 @@ class site::basic {
     require => Package["puppet"],
   }
   
+  #############################
+  # basic packages
+  #############################
+  File ["/etc/motd"] {
+    content => template("site/motd_${cluster}.erb")    
+  }
+
+  package {"nano": ensure => installed}
+  package {"git": ensure => installed}
   
+  file {'/root/.bash_profile':
+    mode    => 644,
+    owner   => "root",
+    group   => "root",
+    ensure => "present",
+    source => "puppet:///modules/site/bash_profile",
+    require => Package["puppet"],
+  }
 }

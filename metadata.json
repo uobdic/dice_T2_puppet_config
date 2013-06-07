@@ -6,18 +6,27 @@
   "project_page": "https://github.com/uobdic/dice_T2_puppet_config",
   "source": "git@github.com:uobdic/dice_T2_puppet_config.git",
   "summary": "Puppet configuration for DICE and T2 clusters",
-  "version": "0.1",
+  "version": "0.1.1",
   "checksums": {
-    "Modulefile": "437fb10860fca9e53d094768f7e1eb45",
+    "Modulefile": "641bb2470032c961252825eba45bee25",
     "README.md": "1bef013c623b706bb046bec6a80f85d8",
     "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
     "files/auth.conf": "fc369f9564d168d6d5a986fc09cc567c",
+    "files/bash_profile": "0a56d6aea3fbced71bd30acdc4ea4b8c",
     "files/puppet.conf": "ca5eaabd95eefd3b9e1e88c5eb3882de",
-    "manifests/basic.pp": "a5b5b5c98d603d40a3c1caf0f23b3508",
-    "manifests/init.pp": "6c533ee90aa6c54546437a3b5954ae18",
+    "manifests/basic.pp": "79896515f52e1c0bc27827a0ba22392f",
+    "manifests/init.pp": "f86a85eb993453e8afaf11ef3be91bed",
+    "manifests/params.pp": "f627de9b84f9d364c7bfb9e791b38e5d",
     "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
     "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
-    "tests/init.pp": "00d7c7e63fdb50445b33ecd8f2ffa222"
+    "templates/motd_Bristol_T2.erb": "4c29212321587035ecf22b779e880a2f",
+    "templates/motd_DICE.erb": "10501dac95deee0015c11db821b127cc",
+    "tests/init.pp": "49b2ad2d8a82f947623c58e13320bea5"
   },
-  "dependencies": []
+  "dependencies": [
+    {
+      "name": "kreczko/motd",
+      "version_requirement": "\u003e\u003d0.1.2"
+    }
+  ]
 }

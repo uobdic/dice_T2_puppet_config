@@ -10,6 +10,6 @@
 #
 # Sample Usage:
 #
-class site {
+class site inherits site::params {
 
 }

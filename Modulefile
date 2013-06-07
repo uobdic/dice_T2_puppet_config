@@ -1,8 +1,10 @@
 name    'dice-T2-puppet-config'
-version '0.1'
+version '0.1.1'
 source 'git@github.com:uobdic/dice_T2_puppet_config.git'
 author 'kreczko'
 license 'Apache License, Version 2.0'
 summary 'Puppet configuration for DICE and T2 clusters'
 description 'Puppet configuration for DICE and T2 clusters'
 project_page 'https://github.com/uobdic/dice_T2_puppet_config'
+#
+dependency 'kreczko/motd', '>= 0.1.2'
