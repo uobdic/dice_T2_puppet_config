@@ -10,6 +10,6 @@
 #
 # Sample Usage:
 #
-class dice_T2_puppet_config {
+class site {
 
 }

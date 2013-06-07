@@ -1,4 +1,4 @@
-class dice_T2_puppet_config::basic {
+class site::basic {
   package {'puppet':
     ensure => installed,
   }
