@@ -1,0 +1,22 @@
+{
+  "name": "kreczko-dice_T2_puppet_config",
+  "author": "kreczko",
+  "description": "",
+  "license": "",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "",
+  "checksums": {
+    "Modulefile": "9b25bed910e3a08958a7771f36ccd987",
+    "README.md": "1bef013c623b706bb046bec6a80f85d8",
+    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
+    "files/puppet.conf": "f65c74452b0047621ab035cdb75f03ab",
+    "manifests/basic.pp": "38852895b9b4c221e7467c6d7ca73c3d",
+    "manifests/init.pp": "8750cbdd8f5d848a3328a75edcf86b40",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
+    "tests/init.pp": "00d7c7e63fdb50445b33ecd8f2ffa222"
+  },
+  "dependencies": []
+}

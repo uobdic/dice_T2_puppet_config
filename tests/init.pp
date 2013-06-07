@@ -1,0 +1,1 @@
+include dice_T2_puppet_config
