@@ -1,4 +1,4 @@
-name    'kreczko-dice_T2_puppet_config'
+name    'dice_T2_puppet_config'
 version '0.1'
 source 'git@github.com:kreczko/dice_T2_puppet_config.git'
 author 'kreczko'

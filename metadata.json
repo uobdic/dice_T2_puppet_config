@@ -8,7 +8,7 @@
   "summary": "Puppet configuration for DICE and T2 clusters",
   "version": "0.1",
   "checksums": {
-    "Modulefile": "595d8a37303169c1606f85ac1a117dc8",
+    "Modulefile": "9b17c8d3abc714d5e6f0478ad4a7fa95",
     "README.md": "1bef013c623b706bb046bec6a80f85d8",
     "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
     "files/auth.conf": "7cc5b0639433cb46e83beebaddedd8ad",
