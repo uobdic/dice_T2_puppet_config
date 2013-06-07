@@ -12,7 +12,7 @@
     "README.md": "1bef013c623b706bb046bec6a80f85d8",
     "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
     "files/auth.conf": "fc369f9564d168d6d5a986fc09cc567c",
-    "files/puppet.conf": "06f7c3871642c80acb071e812fd0e992",
+    "files/puppet.conf": "ca5eaabd95eefd3b9e1e88c5eb3882de",
     "manifests/basic.pp": "a5b5b5c98d603d40a3c1caf0f23b3508",
     "manifests/init.pp": "6c533ee90aa6c54546437a3b5954ae18",
     "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
