@@ -18,5 +18,15 @@ class dice_T2_puppet_config::basic {
     require => Package["puppet"],
   }
   
+  file {'/etc/puppet/auth.conf':
+    notify  => Service["puppet"],
+    mode    => 644,
+    owner   => "root",
+    group   => "root",
+    ensure => "present",
+    source => "puppet:///modules/site/auth.conf",
+    require => Package["puppet"],
+  }
+  
   
 }
