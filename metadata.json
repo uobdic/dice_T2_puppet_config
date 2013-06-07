@@ -1,14 +1,14 @@
 {
-  "name": "dice-T2-puppet-config",
+  "name": "kreczko-site",
   "author": "kreczko",
   "description": "Puppet configuration for DICE and T2 clusters",
   "license": "Apache License, Version 2.0",
   "project_page": "https://github.com/uobdic/dice_T2_puppet_config",
   "source": "git@github.com:uobdic/dice_T2_puppet_config.git",
   "summary": "Puppet configuration for DICE and T2 clusters",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "checksums": {
-    "Modulefile": "641bb2470032c961252825eba45bee25",
+    "Modulefile": "9c9853eebfbd9fb5deea1376c2c799ce",
     "README.md": "1bef013c623b706bb046bec6a80f85d8",
     "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
     "files/auth.conf": "fc369f9564d168d6d5a986fc09cc567c",
@@ -26,7 +26,7 @@
   "dependencies": [
     {
       "name": "kreczko/motd",
-      "version_requirement": "\u003e\u003d0.1.2"
+      "version_requirement": "\u003e\u003d0.1.3"
     }
   ]
 }
