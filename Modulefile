@@ -1,10 +1,10 @@
-name    'kreczko-site'
-version '0.1.2'
-source 'git@github.com:uobdic/dice_T2_puppet_config.git'
+name 'kreczko-site'
+version '0.1.3'
+
 author 'kreczko'
 license 'Apache License, Version 2.0'
+project_page 'https://github.com/uobdic/dice_T2_puppet_config'
+source 'git@github.com:uobdic/dice_T2_puppet_config.git'
 summary 'Puppet configuration for DICE and T2 clusters'
 description 'Puppet configuration for DICE and T2 clusters'
-project_page 'https://github.com/uobdic/dice_T2_puppet_config'
-#
-dependency 'kreczko/motd', '>= 0.1.3'
+dependency 'kreczko/motd', '>=0.1.4'
