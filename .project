@@ -3,7 +3,9 @@
 	<name>dice_T2_puppet_config</name>
 	<comment></comment>
 	<projects>
-		<project>motd</project>
+		<project>puppet-cvmfs</project>
+		<project>puppet-frontiersquid</project>
+		<project>puppet-motd</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

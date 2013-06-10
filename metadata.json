@@ -8,15 +8,17 @@
   "summary": "Puppet configuration for DICE and T2 clusters",
   "version": "0.1.3",
   "checksums": {
-    "Modulefile": "5e52ad0f8aac640ce7b221e61e45cc1c",
+    "Modulefile": "300dbe7c75ece13a6b3f6038b132fdc9",
     "README.md": "1bef013c623b706bb046bec6a80f85d8",
     "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
     "files/auth.conf": "fc369f9564d168d6d5a986fc09cc567c",
     "files/bash_profile": "0a56d6aea3fbced71bd30acdc4ea4b8c",
     "files/puppet.conf": "ca5eaabd95eefd3b9e1e88c5eb3882de",
     "manifests/basic.pp": "d5661971e14080749becd232848bbb4f",
+    "manifests/basic_user.pp": "5cf9603e90fb17d68eae4a62c62f2d2a",
     "manifests/init.pp": "f86a85eb993453e8afaf11ef3be91bed",
     "manifests/params.pp": "f627de9b84f9d364c7bfb9e791b38e5d",
+    "manifests/worker_node.pp": "9ed00d1337096066404c8f7fc887afbb",
     "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
     "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
     "templates/motd_Bristol_T2.erb": "4c29212321587035ecf22b779e880a2f",
@@ -27,6 +29,10 @@
     {
       "name": "kreczko/motd",
       "version_requirement": "\u003e\u003d0.1.4"
+    },
+    {
+      "name": "traylenator/cvmfs",
+      "version_requirement": "\u003e\u003d0.0.2"
     }
   ]
 }
