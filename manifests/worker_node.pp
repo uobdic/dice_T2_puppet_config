@@ -1,6 +1,16 @@
 class site::worker_node inherits site::params {
-  require cvmfs
 
+  class{'cvmfs::install':
+    cvmfs_version => $site::params::cvmfs_version,
+  }
+  
+  class{'cvmfs::config':
+    cvmfs_quota_limit => $site::params::cvmfs_quota_limit,
+    cvmfs_http_proxy => $site::params::cvmfs_http_proxy,
+    cvmfs_server_url => $site::params::cvmfs_server_url,
+    cvmfs_cache_base => $site::params::cvmfs_cache_base,
+  }
+   class{'cvmfs::service':}
   #  class {'cvmfs:'}
   cvmfs::mount { 'lhcb.cern.ch': cvmfs_quota_limit => 20000}
 
