@@ -18,7 +18,7 @@
     "manifests/basic_user.pp": "5cf9603e90fb17d68eae4a62c62f2d2a",
     "manifests/init.pp": "f86a85eb993453e8afaf11ef3be91bed",
     "manifests/params.pp": "f68ae7e45502d9b3364a5735e58c7d7e",
-    "manifests/worker_node.pp": "6f5dd25c8b099c8d54e9a2b3c22739ed",
+    "manifests/worker_node.pp": "86078dc4962f28327e0f7bcc1651c989",
     "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
     "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
     "templates/motd_Bristol_T2.erb": "4c29212321587035ecf22b779e880a2f",
