@@ -16,7 +16,7 @@ class site::basic ($cluster = $site::params::cluster) inherits site::params {
     owner   => "root",
     group   => "root",
     ensure  => "present",
-    source  => "puppet:///modules/site/puppet.conf",
+    content  => template("site/puppet.conf.erb"),
     require => Package["puppet"],
   }
 
