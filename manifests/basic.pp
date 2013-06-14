@@ -1,5 +1,8 @@
-class site::basic ($cluster = $site::params::cluster) inherits site::params {
-
+class site::basic (
+  $cluster = $site::params::cluster, 
+  $nameserver = [], 
+  $search = [],
+) inherits site::params {
   package { 'puppet': ensure => installed, }
 
   #############################
@@ -16,7 +19,7 @@ class site::basic ($cluster = $site::params::cluster) inherits site::params {
     owner   => "root",
     group   => "root",
     ensure  => "present",
-    content  => template("site/puppet.conf.erb"),
+    content => template("site/puppet.conf.erb"),
     require => Package["puppet"],
   }
 
@@ -34,7 +37,9 @@ class site::basic ($cluster = $site::params::cluster) inherits site::params {
   # basic packages
   #############################
   motd::file { 'mine': template => "site/motd_${cluster}.erb" }
+
   package { "nano": ensure => installed }
+
   package { "git": ensure => installed }
 
   file { '/root/.bash_profile':
@@ -44,5 +49,10 @@ class site::basic ($cluster = $site::params::cluster) inherits site::params {
     ensure  => "present",
     source  => "puppet:///modules/site/bash_profile",
     require => Package["puppet"],
+  }
+  
+  class{'resolvconf':
+    nameserver => $nameserver,
+    search => $search,
   }
 }
