@@ -14,7 +14,7 @@
     "files/auth.conf": "fc369f9564d168d6d5a986fc09cc567c",
     "files/bash_profile": "0a56d6aea3fbced71bd30acdc4ea4b8c",
     "files/puppet.conf": "ca5eaabd95eefd3b9e1e88c5eb3882de",
-    "manifests/basic.pp": "0b2773b49faab18cb00ed97e70d0ad35",
+    "manifests/basic.pp": "d72dea87cfcb72f8cbaeb691b47026b9",
     "manifests/basic_user.pp": "94e014bb7a0313e85b475a91f0b3015a",
     "manifests/create_accounts.pp": "529c389f0c5258d29ffe5cd0ae4dc927",
     "manifests/create_groups.pp": "f3ab3ad5fbbdd9ea2ad3c8ee6452a013",
@@ -28,6 +28,7 @@
     "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
     "templates/motd_Bristol_T2.erb": "4c29212321587035ecf22b779e880a2f",
     "templates/motd_DICE.erb": "10501dac95deee0015c11db821b127cc",
+    "templates/network.erb": "597d39e18d074fbd20785f7007edbf5c",
     "templates/puppet.conf.erb": "9f8aed3cbda61624708814be700c819f",
     "templates/resolv.conf.erb": "2fd2d8e7a3a729205b59a8394993016e",
     "tests/init.pp": "49b2ad2d8a82f947623c58e13320bea5"

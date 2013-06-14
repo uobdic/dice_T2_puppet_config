@@ -39,8 +39,9 @@ class site::basic (
   motd::file { 'mine': template => "site/motd_${cluster}.erb" }
 
   package { "nano": ensure => installed }
-
   package { "git": ensure => installed }
+  package { "wget": ensure => installed }
+  package { "yum": ensure => installed }
 
   file { '/root/.bash_profile':
     mode    => 644,
@@ -54,5 +55,13 @@ class site::basic (
   class{'site::resolvconf':
     nameserver => $nameserver,
     search => $search,
+  }
+  
+  file { '/etc/sysconfig/network':
+    mode    => 644,
+    owner   => "root",
+    group   => "root",
+    ensure  => "present",
+    content  => template("${module_name}/network.erb"),
   }
 }
