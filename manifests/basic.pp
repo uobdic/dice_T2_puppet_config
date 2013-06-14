@@ -51,7 +51,7 @@ class site::basic (
     require => Package["puppet"],
   }
   
-  class{'resolvconf':
+  class{'site::resolvconf':
     nameserver => $nameserver,
     search => $search,
   }
