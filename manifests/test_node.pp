@@ -9,7 +9,7 @@ class site::test_node (
   $cvmfs_cache_base  = $site::params::cvmfs_cache_base,
   $java_jdk_version  = undef,
   $yum_repositories = [],) inherits site::params {
-  require site::install_CVMFS
+  require site::install_cvmfs
 
   if ($java_jdk_version) {
     package { 'jdk':

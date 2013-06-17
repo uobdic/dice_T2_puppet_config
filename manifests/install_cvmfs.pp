@@ -1,4 +1,4 @@
-class site::install_CVMFS (
+class site::install_cvmfs (
   $cvmfs_version     = $site::params::cvmfs_version,
   $cvmfs_quota_limit = $site::params::cvmfs_quota_limit,
   $cvmfs_http_proxy  = $site::params::cvmfs_http_proxy,
