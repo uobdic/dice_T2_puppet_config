@@ -22,4 +22,6 @@ class site::params {
       require     => File['/etc/pki/rpm-gpg/RPM-GPG-KEY-CernVM']
     }
   }
+  
+  $for_testing = "default"
 }
