@@ -24,4 +24,7 @@ class site::params {
   }
   
   $for_testing = "default"
+  
+  $java_repository = 'bristol'
+  $java_version = '1.6.0_43-fcs'
 }
