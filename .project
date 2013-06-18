@@ -5,6 +5,8 @@
 	<projects>
 		<project>puppet-account</project>
 		<project>puppet-cvmfs</project>
+		<project>puppet-dhcp</project>
+		<project>puppet-dns</project>
 		<project>puppet-frontiersquid</project>
 		<project>puppet-motd</project>
 	</projects>
