@@ -1,4 +1,4 @@
-class site::params {
+class site::params ($test_message = undef) {
   $cluster = "DICE"
   # CVMFS specific parameters for the site
   $cvmfs_version = present # or latest if you have faith
@@ -24,7 +24,18 @@ class site::params {
   }
   
   $for_testing = "default"
+  if $test_message != undef {
+    $for_testing = $test_message
+  }
   
   $java_repository = 'bristol'
   $java_version = '1.6.0_43-fcs'
+  
+  $basic_packages = {
+    "nano" => {},
+    "yum" => {},
+    "git" => {},
+    "wget" => {},
+    "mlocate" => {},
+  }
 }

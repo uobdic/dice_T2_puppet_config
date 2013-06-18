@@ -3,6 +3,7 @@ class site::basic (
   $yum_repositories = [],
   $nameserver = [], 
   $search = [],
+  $packages = $site::params::basic_packages,
 ) inherits site::params {
 
   #############################
@@ -46,14 +47,11 @@ class site::basic (
   # basic packages
   #############################
   motd::file { 'mine': template => "site/motd_${cluster}.erb" }
-
-  package { "nano": ensure => installed }
-
-  package { "git": ensure => installed }
-
-  package { "wget": ensure => installed }
-
-  package { "yum": ensure => installed }
+  
+  $package_defaults = {
+    'ensure' => installed,
+  }
+  create_resources('package', $packages, $package_defaults)
 
   file { '/root/.bash_profile':
     mode    => 644,
