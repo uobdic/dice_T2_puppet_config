@@ -1,6 +1,6 @@
 # Fact: javaversion
 #
-# Purpose: Report the version of cvmfs
+# Purpose: Report the version of java
 #
 Facter.add(:javaversion) do
   setcode do
