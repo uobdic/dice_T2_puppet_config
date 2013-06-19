@@ -8,13 +8,14 @@
   "summary": "Puppet configuration for DICE and T2 clusters",
   "version": "0.1.3",
   "checksums": {
-    "Modulefile": "300dbe7c75ece13a6b3f6038b132fdc9",
+    "Modulefile": "12d04b9884486afeec138971fec7ff3e",
     "README.md": "0061ac00d5e487667d972f2c44cbca3c",
     "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
     "files/auth.conf": "fc369f9564d168d6d5a986fc09cc567c",
     "files/bash_profile": "0a56d6aea3fbced71bd30acdc4ea4b8c",
     "files/puppet.conf": "ca5eaabd95eefd3b9e1e88c5eb3882de",
-    "lib/facter/javaversion.rb": "9b55d2f62366c1f976dfab40dbd2e2af",
+    "lib/facter/has_enabled_epel_repo.rb": "2889357ac9e9724b1996f52b52369008",
+    "lib/facter/javaversion.rb": "c0f56a933172266b583b965c891e80eb",
     "manifests/basic.pp": "9f5b238c21bfde637f259d9c742c00b7",
     "manifests/basic_user.pp": "94e014bb7a0313e85b475a91f0b3015a",
     "manifests/create_accounts.pp": "529c389f0c5258d29ffe5cd0ae4dc927",
@@ -46,6 +47,14 @@
     {
       "name": "traylenator/cvmfs",
       "version_requirement": "\u003e\u003d0.0.2"
+    },
+    {
+      "name": "kreczko/yumhelper",
+      "version_requirement": "\u003e\u003d0.0.1"
+    },
+    {
+      "name": "kreczko/apelpublisher",
+      "version_requirement": "\u003e\u003d0.0.1"
     }
   ]
 }
