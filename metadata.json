@@ -14,7 +14,7 @@
     "files/auth.conf": "fc369f9564d168d6d5a986fc09cc567c",
     "files/bash_profile": "0a56d6aea3fbced71bd30acdc4ea4b8c",
     "files/puppet.conf": "ca5eaabd95eefd3b9e1e88c5eb3882de",
-    "lib/facter/has_enabled_epel_repo.rb": "2889357ac9e9724b1996f52b52369008",
+    "lib/facter/has_enabled_epel_repo.rb": "a5823dc4d12f0b166f2132c057624667",
     "lib/facter/javaversion.rb": "c0f56a933172266b583b965c891e80eb",
     "manifests/basic.pp": "9f5b238c21bfde637f259d9c742c00b7",
     "manifests/basic_user.pp": "94e014bb7a0313e85b475a91f0b3015a",
