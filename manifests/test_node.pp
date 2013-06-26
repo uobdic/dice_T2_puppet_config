@@ -24,8 +24,6 @@ class site::test_node (
     repositories => $yum_repositories,
   }
   
-  require site::params
-  
   notify {"Testing variable = ${site::params::for_testing}":}
   
   
