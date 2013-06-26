@@ -1,0 +1,11 @@
+#!/bin/sh
+# This file was create using Puppet. Modifications are futile.
+# This script will be executed *after* all the other init scripts.
+# You can put your own initialization stuff in here if you don't
+# want to do the full Sys V style init stuff.
+
+route add -net 137.222.79.0/24
+route add default gw 137.222.79.1
+route add default gw 137.222.79.2 metric 1
+
+touch /var/lock/subsys/local
