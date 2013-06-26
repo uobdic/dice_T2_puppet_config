@@ -17,7 +17,7 @@
     "files/rc.local": "09f1c9dbac9962831ecf2ab81ccccdb3",
     "lib/facter/has_enabled_epel_repo.rb": "a5823dc4d12f0b166f2132c057624667",
     "lib/facter/javaversion.rb": "c0f56a933172266b583b965c891e80eb",
-    "manifests/basic.pp": "3428b947bdd103ce0c969ec86045587c",
+    "manifests/basic.pp": "0a121747e7d70c0e3c7cd11e4c0d34d6",
     "manifests/basic_user.pp": "94e014bb7a0313e85b475a91f0b3015a",
     "manifests/create_accounts.pp": "529c389f0c5258d29ffe5cd0ae4dc927",
     "manifests/create_groups.pp": "f3ab3ad5fbbdd9ea2ad3c8ee6452a013",

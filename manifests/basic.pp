@@ -42,12 +42,6 @@ class site::basic (
     require => Package["puppet"],
   }
   
-  file { '/etc/puppet/auth.conf':
-    notify  => Service["puppet"],
-    source  => "puppet:///modules/site/auth.conf",
-    require => Package["puppet"],
-  }
-
   #############################
   # basic packages
   #############################
