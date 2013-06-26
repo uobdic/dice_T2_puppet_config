@@ -3,6 +3,7 @@
 	<name>dice_T2_puppet_config</name>
 	<comment></comment>
 	<projects>
+		<project>apelpublisher</project>
 		<project>puppet-account</project>
 		<project>puppet-cvmfs</project>
 		<project>puppet-dhcp</project>
