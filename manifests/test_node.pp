@@ -24,19 +24,8 @@ class site::test_node (
     repositories => $yum_repositories,
   }
   
-  notify {"Testing variable = ${site::params::for_testing}":}
-  
-  
-  yumhelper::modify { 'enable-epel':
-    repository => 'epel',
-    enable     => true,
-  }
-
   yumhelper::modify { 'disable-epel':
     repository => 'epel',
     enable     => false,
   }
-  class{'apelpublisher':}
-  
-  Yumhelper::Modify['enable-epel'] -> Class['apelpublisher'] -> Yumhelper::Modify['disable-epel']
 }
