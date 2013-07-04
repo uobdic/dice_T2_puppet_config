@@ -3,7 +3,13 @@ class site::basic (
   $yum_repositories = [],
   $nameserver = [], 
   $search = [],
-  $packages = $site::params::basic_packages,
+  $packages = {
+    "nano" => {},
+    "yum" => {},
+    "git" => {},
+    "wget" => {},
+    "mlocate" => {},
+  },
 ) inherits site::params {
   
   File {#defaults for files
@@ -46,10 +52,6 @@ class site::basic (
   # basic packages
   #############################
   motd::file { 'mine': template => "site/motd_${cluster}.erb" }
-  
-  file {'/etc/rc.local':
-    source  => "puppet:///modules/site/rc.local",
-  }
   
   $package_defaults = {
     'ensure' => installed,
