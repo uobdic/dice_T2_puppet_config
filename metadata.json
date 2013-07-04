@@ -29,7 +29,7 @@
     "manifests/init.pp": "f86a85eb993453e8afaf11ef3be91bed",
     "manifests/install_cvmfs.pp": "9b9276238463dfb49f164c5efae5450a",
     "manifests/install_java.pp": "d4c8210842e077d504be259edc2e46e7",
-    "manifests/params.pp": "7df17c6a7f63d87d530155b471e0b78e",
+    "manifests/params.pp": "3cd190d1f65143fe3cb440692f912346",
     "manifests/resolvconf.pp": "820e1b9b210ddbb2827f833e5a82a29b",
     "manifests/smart_proxy_host.pp": "3c49758a54cbd84aa19b9535f25fc820",
     "manifests/test_node.pp": "356808c0506408aacb88f896ab629ef0",

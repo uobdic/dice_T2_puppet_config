@@ -16,7 +16,7 @@ class site::params ($test_message = undef) {
       mirrorlist  => "https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=x86_64",
       gpgcheck    => 1,
       gpgkey      => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CernVM',
-      enabled     => 1,
+      enabled     => 0,
       includepkgs => 'cvmfs,cvmfs-keys',
       priority    => 80,
       require     => File['/etc/pki/rpm-gpg/RPM-GPG-KEY-CernVM']
