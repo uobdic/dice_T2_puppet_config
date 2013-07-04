@@ -65,12 +65,4 @@ class site::basic (
     nameserver => $nameserver,
     search     => $search,
   }
-
-  file { '/etc/sysconfig/network':
-    mode    => 644,
-    owner   => "root",
-    group   => "root",
-    ensure  => "present",
-    content => template("${module_name}/network.erb"),
-  }
 }
