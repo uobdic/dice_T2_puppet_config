@@ -4,19 +4,18 @@ class site::create_pool_accounts (
   $account_number_end   = 1,
   $user_ID_number_start = 90000,
   $user_ID_number_end   = 90001,
+  $primary_group        = undef,
   $groups               = ['puppettesting'],
   $users                = undef,
   $create_home_dir      = true) {
   $defaults = {
-    'ensure'       => present,
-    'shell'        => "/bin/bash",
-    'password'     => "*NP*",
-    'create_group' => false,
-    'manage_home'  => $create_home_dir,
+    'manage_home' => $create_home_dir,
+    'groups'      => $groups,
+    'primary_group' => $primary_group,
   }
 
   if $users != undef {
-    create_resources('account', $users, $defaults)
+    create_resources('pool_account', $users, $defaults)
   } else {
     notify { 'This functionality is not yet available.': }
   }
