@@ -1,4 +1,4 @@
-define site::create_pool_accounts (
+class site::create_pool_accounts (
   $account_prefix       = 'puppettest',
   $account_number_start = 0,
   $account_number_end   = 1,

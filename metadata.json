@@ -25,7 +25,7 @@
     "manifests/basic_user.pp": "94e014bb7a0313e85b475a91f0b3015a",
     "manifests/create_accounts.pp": "529c389f0c5258d29ffe5cd0ae4dc927",
     "manifests/create_groups.pp": "f3ab3ad5fbbdd9ea2ad3c8ee6452a013",
-    "manifests/create_pool_accounts.pp": "a5a7aabf92c938f3feef9b58e3621d2c",
+    "manifests/create_pool_accounts.pp": "995b0ecb52fb0697fe308af6577d2316",
     "manifests/fstab.pp": "74420b9c47360c975e8a30f5ca7a22b7",
     "manifests/init.pp": "f86a85eb993453e8afaf11ef3be91bed",
     "manifests/install_cvmfs.pp": "9b9276238463dfb49f164c5efae5450a",
