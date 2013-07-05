@@ -12,7 +12,7 @@
     "README.md": "0061ac00d5e487667d972f2c44cbca3c",
     "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
     "files/auth.conf": "f9b73d1c50eb332d136b595586274b71",
-    "files/bash_profile": "4562a4a2b2effd11a7beb929f36c6159",
+    "files/bash_profile": "77a7a4916802fd0538d63594ba7508e5",
     "files/puppet.conf": "3c6eaae4b5f34915e817d5bfebaa9949",
     "files/rc.local": "09f1c9dbac9962831ecf2ab81ccccdb3",
     "lib/facter/cvmfs_atlas_revision.rb": "e17a64a366795c00e91a343553688a08",

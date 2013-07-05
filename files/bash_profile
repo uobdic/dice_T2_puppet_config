@@ -10,3 +10,4 @@ fi
 PATH=$PATH:$HOME/bin
 alias ll='ls -l --color=tty'
 export PATH
+unset USERNAME
