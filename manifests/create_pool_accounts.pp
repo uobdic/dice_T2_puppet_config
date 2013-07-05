@@ -12,7 +12,7 @@ class site::create_pool_accounts (
     'manage_home' => $create_home_dir,
     'groups'      => $groups,
     'primary_group' => $primary_group,
-    'comment' => 'mapped user for group ${primary_group}'
+    'comment' => "mapped user for group ${primary_group}"
   }
 
   if $users != undef {
