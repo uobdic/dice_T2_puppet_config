@@ -61,5 +61,10 @@ define pool_account (
       group   => $dir_group,
       mode    => 0700;
   }
+  
+  file {
+    "/etc/grid-security/gridmapdir/{title}":
+      ensure  => present,
+  }
 
 }
