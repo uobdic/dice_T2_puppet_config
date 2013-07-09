@@ -63,7 +63,7 @@ define pool_account (
   }
   
   file {
-    "/etc/grid-security/gridmapdir/{title}":
+    "/etc/grid-security/gridmapdir/${title}":
       ensure  => present,
   }
 
