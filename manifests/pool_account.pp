@@ -65,9 +65,10 @@ define pool_account (
   }
 
   if $create_gridmapdir_entry {
-    file { "/etc/grid-security/gridmapdir": ensure => "directory", }
-
-    file { "/etc/grid-security/gridmapdir/${title}": ensure => present, }
+    file { "/etc/grid-security/gridmapdir/${title}":
+      ensure  => present,
+      require => File['/etc/grid-security/gridmapdir'],
+    }
   }
 
 }

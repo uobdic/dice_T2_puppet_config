@@ -9,6 +9,10 @@ class site::create_pool_accounts (
   $users                   = undef,
   $create_home_dir         = true,
   $create_gridmapdir_entry = false) {
+  if $create_gridmapdir_entry {
+    file { "/etc/grid-security/gridmapdir": ensure => "directory", }
+  }
+
   $defaults = {
     'manage_home'             => $create_home_dir,
     'groups'                  => $groups,
