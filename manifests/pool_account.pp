@@ -1,6 +1,9 @@
 # == Define: Pool_Account
 #  A defined type for managing grid pool accounts
 #
+# == Information
+# https://twiki.cern.ch/twiki/bin/view/FIOgroup/PoolAccountEcosystem
+#
 # === Examples
 #
 #  pool_account { 'cmspil111':
@@ -10,23 +13,24 @@
 #    groups        => [ 'cms'],
 #  }
 define pool_account (
-  $username      = $title,
-  $password      = '*NP*',
-  $shell         = '/bin/bash',
-  $manage_home   = true,
-  $home_dir      = "/home/${title}",
-  $primary_group = undef,
-  $uid           = undef,
-  $groups        = [
+  $username                = $title,
+  $password                = '*NP*',
+  $shell                   = '/bin/bash',
+  $manage_home             = true,
+  $home_dir                = "/home/${title}",
+  $primary_group           = undef,
+  $uid                     = undef,
+  $groups                  = [
     ],
-  $ensure        = present,
-  $comment       = "$title Puppet-managed User") {
+  $ensure                  = present,
+  $comment                 = "$title Puppet-managed User",
+  $create_gridmapdir_entry = false) {
   case $ensure {
     present : {
       $dir_ensure = directory
       $dir_owner  = $username
       $dir_group  = $primary_group
-      User[$title] -> File["${title}_home"] 
+      User[$title] -> File["${title}_home"]
     }
     absent  : {
       $dir_ensure = absent
@@ -38,33 +42,32 @@ define pool_account (
       err("Invalid value given for ensure: ${ensure}. Must be one of present,absent.")
     }
   }
-  
-  user {
-    $title:
-      ensure     => $ensure,
-      name       => $username,
-      comment    => $comment,
-      uid        => $uid,
-      password   => $password,
-      shell      => $shell,
-      gid        => $primary_group,
-      groups     => $groups,
-      home       => $home_dir,
-      managehome => $manage_home,
+
+  user { $title:
+    ensure     => $ensure,
+    name       => $username,
+    comment    => $comment,
+    uid        => $uid,
+    password   => $password,
+    shell      => $shell,
+    gid        => $primary_group,
+    groups     => $groups,
+    home       => $home_dir,
+    managehome => $manage_home,
   }
 
-  file {
-    "${title}_home":
-      ensure  => $dir_ensure,
-      path    => $home_dir,
-      owner   => $dir_owner,
-      group   => $dir_group,
-      mode    => 0700;
+  file { "${title}_home":
+    ensure => $dir_ensure,
+    path   => $home_dir,
+    owner  => $dir_owner,
+    group  => $dir_group,
+    mode   => 0700;
   }
-  
-  file {
-    "/etc/grid-security/gridmapdir/${title}":
-      ensure  => present,
+
+  if $create_gridmapdir_entry {
+    file { "/etc/grid-security/gridmapdir": ensure => "directory", }
+
+    file { "/etc/grid-security/gridmapdir/${title}": ensure => present, }
   }
 
 }
