@@ -20,10 +20,9 @@ define pool_account (
   $home_dir                = "/home/${title}",
   $primary_group           = undef,
   $uid                     = undef,
-  $groups                  = [
-    ],
+  $groups                  = [],
   $ensure                  = present,
-  $comment                 = "$title Puppet-managed User",
+  $comment                 = "mapped user for group $title",
   $create_gridmapdir_entry = false) {
   case $ensure {
     present : {
