@@ -41,6 +41,7 @@
     "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
     "templates/motd_Bristol_T2.erb": "4c29212321587035ecf22b779e880a2f",
     "templates/motd_DICE.erb": "10501dac95deee0015c11db821b127cc",
+    "templates/motd_HEP.erb": "951c674959c869ee9e4cfbac02e3e3f6",
     "templates/network.erb": "597d39e18d074fbd20785f7007edbf5c",
     "templates/puppet.conf.erb": "c5793dc15e59739a5d5aaa54b96c23e2",
     "templates/resolv.conf.erb": "2fd2d8e7a3a729205b59a8394993016e",
