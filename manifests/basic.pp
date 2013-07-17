@@ -29,7 +29,7 @@ class site::basic (
   #############################
   # to be moved to puppet module
   #############################
-  package { 'puppet': ensure => installed, }
+  package { 'puppet': ensure => latest, }
 
   service { 'puppet':
     ensure => "running",
