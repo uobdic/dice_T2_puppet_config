@@ -37,5 +37,6 @@ class site::params ($test_message = undef) {
     "git" => {},
     "wget" => {},
     "mlocate" => {},
+    "man" => {},
   }
 }
