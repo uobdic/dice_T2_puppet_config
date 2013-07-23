@@ -39,7 +39,7 @@
     "manifests/yum_repositories.pp": "aa35eb631324945f1916acfac3cc2a48",
     "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
     "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
-    "templates/motd_Bristol_T2.erb": "e4eac5588c174e8271f63a75234a1a6b",
+    "templates/motd_Bristol_T2.erb": "0257b3fb9e55ca7e513c95d76ff778b0",
     "templates/motd_DICE.erb": "10501dac95deee0015c11db821b127cc",
     "templates/motd_HEP.erb": "951c674959c869ee9e4cfbac02e3e3f6",
     "templates/network.erb": "597d39e18d074fbd20785f7007edbf5c",
