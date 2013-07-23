@@ -14,3 +14,7 @@
 +--------------------------------------------+
 Your service today will be provided by
 <%= fqdn %>
+<% if @SL_release %>
+Running: <%= @SL_release %>
+<% end %>
+<%= Time.now.gmtime %>
