@@ -4,8 +4,7 @@
 # You can put your own initialization stuff in here if you don't
 # want to do the full Sys V style init stuff.
 
-route add -net 137.222.79.0/24
-route add default gw 137.222.79.1
-route add default gw 137.222.79.2 metric 1
+route add default gw 10.132.0.250
+route add default gw 10.132.0.251 metric 1
 
 touch /var/lock/subsys/local
