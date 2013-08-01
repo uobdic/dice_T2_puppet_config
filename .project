@@ -10,6 +10,7 @@
 		<project>puppet-dns</project>
 		<project>puppet-frontiersquid</project>
 		<project>puppet-motd</project>
+		<project>puppetlabs-firewall</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
