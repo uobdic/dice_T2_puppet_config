@@ -35,7 +35,7 @@
     "manifests/install_java.pp": "d4c8210842e077d504be259edc2e46e7",
     "manifests/params.pp": "e276c9b3e5b9c472b902f1eb05cecdee",
     "manifests/pool_account.pp": "6aac4f9d081d381225254088e32108c7",
-    "manifests/puppet_master.pp": "e8161e7ab86cb9e46fc9c5a470235d79",
+    "manifests/puppet_master.pp": "bedc9953ad96c63fe06121bec8dabe44",
     "manifests/resolvconf.pp": "820e1b9b210ddbb2827f833e5a82a29b",
     "manifests/reverse_proxy.pp": "3367c6ea0fd461a54607693f7e463b51",
     "manifests/smart_proxy_host.pp": "3c49758a54cbd84aa19b9535f25fc820",

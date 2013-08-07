@@ -16,8 +16,8 @@ class site::puppet_master (
 
   # cron job for dumping the PostgreSQL database
   cron { postgresql_backup:
-    command => "/usr/bin/pg_dump &> ${backup_folder}/foreman/pg_dump.txt",
-    user    => foreman,
+    command => "/usr/bin/sudo -u foreman /usr/bin/pg_dump &> ${backup_folder}/foreman/pg_dump.txt",
+    user    => root,
     hour    => '*/8',
   }
 }
