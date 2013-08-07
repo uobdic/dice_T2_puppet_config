@@ -3,7 +3,7 @@
 # This module manages the Puppet master
 #
 # Parameters: backup_folder
-class site::puppetmaster (
+class site::puppet_master (
   $backup_folder = '/backup') {
   # create backup folders
   $backup_directories = [
