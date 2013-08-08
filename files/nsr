@@ -1,0 +1,18 @@
+<< ./afs >>
++skip: .
+<< ./misc >>
++skip: .
+<< ./raid >>
++skip: .
+<< ./storage >>
++skip: .
+<< ./gpfs_phys >>
++skip: .
+<< ./usr>>
++skip: .
+<< ./lib >>
++skip: .
+<< ./lib64 >>
++skip: .
+<< ./Data/iso-images/ >>
++skip: .
