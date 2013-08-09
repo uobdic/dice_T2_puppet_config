@@ -10,6 +10,8 @@ class site::basic (
     "wget" => {},
     "mlocate" => {},
   },
+  $firewall_rules = {},
+  $use_firewall = false,
 ) inherits site::params {
   
   File {#defaults for files
@@ -66,5 +68,10 @@ class site::basic (
   class { 'site::resolvconf':
     nameserver => $nameserver,
     search     => $search,
+  }
+  
+
+  if $use_firewall == true {
+    class { 'site::firewall': rules => $firewall_rules, }    
   }
 }
