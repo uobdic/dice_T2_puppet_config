@@ -25,7 +25,7 @@ class site::basic (
   # yum repositories
   #############################
   class { 'site::yum_repositories':
-    repositories => $::yum_repositories,
+    repositories => $yum_repositories,
   }
 
   #############################
@@ -58,7 +58,7 @@ class site::basic (
   $package_defaults = {
     'ensure' => installed,
   }
-  create_resources('package', $::packages, $package_defaults)
+  create_resources('package', $packages, $package_defaults)
 
   file { '/root/.bash_profile':
     source  => 'puppet:///modules/site/bash_profile',
@@ -66,12 +66,12 @@ class site::basic (
   }
 
   class { 'site::resolvconf':
-    nameserver => $::nameserver,
-    search     => $::search,
+    nameserver => $nameserver,
+    search     => $search,
   }
 
 
-  if $::use_firewall == true {
-    class { 'site::firewall': rules => $::firewall_rules, }
+  if $use_firewall == true {
+    class { 'site::firewall': rules => $firewall_rules, }
   }
 }

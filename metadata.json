@@ -30,7 +30,7 @@
     "manifests/backup/config.pp": "3ce37be958d430cf96894c18940ce2f0",
     "manifests/backup/install.pp": "9afa555166046d96f4723c5fe638dd9d",
     "manifests/backup/service.pp": "6aa6180c62d736736bdfb880a1095aa7",
-    "manifests/basic.pp": "a3acc168dfd87fe59b69bebadbe4af38",
+    "manifests/basic.pp": "780b4721acce3c23a547939f5926c97d",
     "manifests/basic_user.pp": "94e014bb7a0313e85b475a91f0b3015a",
     "manifests/create_accounts.pp": "529c389f0c5258d29ffe5cd0ae4dc927",
     "manifests/create_groups.pp": "f3ab3ad5fbbdd9ea2ad3c8ee6452a013",
