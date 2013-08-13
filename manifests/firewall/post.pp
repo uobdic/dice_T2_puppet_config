@@ -1,7 +1,20 @@
 class site::firewall::post {
-  firewall { '999 drop all':
+  firewall { '9997 Log once all DROPs are done':
+    proto      => 'all',
+    jump       => 'LOG',
+    log_prefix => '[iptables]: '
+  }
+
+  firewall { '9998 Reject anything else':
     proto  => 'all',
-    action => 'drop',
-    before => undef,
+    jump   => 'REJECT',
+    reject => 'icmp-host-prohibited',
+  }
+
+  firewall { '9999 Reject anything else':
+    chain  => 'FORWARD',
+    proto  => 'all',
+    jump   => 'REJECT',
+    reject => 'icmp-host-prohibited',
   }
 }
