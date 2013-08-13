@@ -16,12 +16,13 @@ class site::puppet_master (
 
   # cron job for dumping the PostgreSQL database
   cron { postgresql_backup:
-    command => "/usr/bin/sudo -u foreman /usr/bin/pg_dump &> ${backup_folder}/foreman/pg_dump_`date +%d_%m_%Y_%H.%M`.txt",
-    user    => root,
+    command => "/usr/bin/pg_dump &> ${backup_folder}/foreman/pg_dump_`date +\\%d_\\%m_\\%Y_\\%H.\\%M`.txt",
+    user    => foreman,
     hour    => '*/8',
   }
-  
+
   $keep_for_n_days = 3
+
   cron { postgresql_backup_cleanup:
     command => "find ${backup_folder}/foreman/pg_dump* -mtime +3 -exec rm {} \\;",
     user    => root,
