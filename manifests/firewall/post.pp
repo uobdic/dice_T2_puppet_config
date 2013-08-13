@@ -7,14 +7,14 @@ class site::firewall::post {
 
   firewall { '9998 Reject anything else':
     proto  => 'all',
-    jump   => 'REJECT',
+    action => 'reject',
     reject => 'icmp-host-prohibited',
   }
 
   firewall { '9999 Reject anything else':
     chain  => 'FORWARD',
     proto  => 'all',
-    jump   => 'REJECT',
+    action => 'reject',
     reject => 'icmp-host-prohibited',
   }
 }
