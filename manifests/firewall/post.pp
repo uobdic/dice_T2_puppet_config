@@ -1,4 +1,13 @@
 class site::firewall::post {
+  # after pre, before custom rules
+  firewall { '199 Reject anything else':
+    chain  => 'FORWARD',
+    proto  => 'all',
+    action => 'reject',
+    reject => 'icmp-host-prohibited',
+  }
+
+  # after everything
   firewall { '9997 Log once all DROPs are done':
     proto      => 'all',
     jump       => 'LOG',
@@ -11,10 +20,4 @@ class site::firewall::post {
     reject => 'icmp-host-prohibited',
   }
 
-  firewall { '9999 Reject anything else':
-    chain  => 'FORWARD',
-    proto  => 'all',
-    action => 'reject',
-    reject => 'icmp-host-prohibited',
-  }
 }
