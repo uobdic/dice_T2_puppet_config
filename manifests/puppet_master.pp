@@ -6,13 +6,20 @@
 class site::puppet_master (
   $backup_folder = '/backup') {
   # create backup folders
-  $backup_directories = [
-    $backup_folder,
-    "${backup_folder}/foreman/",
-    "${backup_folder}/puppet/",
-    "${backup_folder}/root/"]
+  file { "${backup_folder}/foreman/":
+    ensure  => 'directory',
+    owner   => 'foreman',
+    require => User['foreman'],
+  }
 
-  file { $backup_directories: ensure => 'directory', }
+  file { [
+    "${backup_folder}/puppet/",
+    "${backup_folder}/root/"]:
+    ensure => 'directory',
+    owner  => 'root',
+  }
+
+  $keep_for_n_days = 3
 
   # cron job for dumping the PostgreSQL database
   cron { postgresql_backup:
@@ -21,10 +28,20 @@ class site::puppet_master (
     hour    => '*/8',
   }
 
-  $keep_for_n_days = 3
-
   cron { postgresql_backup_cleanup:
     command => "find ${backup_folder}/foreman/pg_dump* -mtime +3 -exec rm {} \\;",
+    user    => root,
+    hour    => '*/8',
+  }
+
+  cron { puppet_backup:
+    command => "/bin/tar czf ${backup_folder}/puppet_`date +\\%d_\\%m_\\%Y_\\%H.\\%M`.tar.gz /etc/puppet ",
+    user    => root,
+    hour    => '*/8',
+  }
+
+  cron { puppet_backup_cleanup:
+    command => "find ${backup_folder}/puppet/puppet_* -mtime +3 -exec rm {} \\;",
     user    => root,
     hour    => '*/8',
   }
