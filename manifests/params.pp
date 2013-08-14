@@ -34,25 +34,12 @@ class site::params (
   $java_version    = '1.6.0_43-fcs'
 
   $basic_packages  = {
-    "nano"    => {
-    }
-    ,
-    "yum"     => {
-    }
-    ,
-    "git"     => {
-    }
-    ,
-    "wget"    => {
-    }
-    ,
-    "mlocate" => {
-    }
-    ,
-    "man"     => {
-      ,
-    }
-    ,
+    "nano"    => {},
+    "yum"     => {},
+    "git"     => {},
+    "wget"    => {},
+    "mlocate" => {},
+    "man"     => {},
   }
 
   $syslog          = $major_release ? {
