@@ -1,0 +1,3 @@
+class site::firewall::tiertwo {
+
+}
