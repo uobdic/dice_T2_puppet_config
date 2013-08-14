@@ -27,4 +27,14 @@ class site::backup::service inherits site::params {
       Package['lgtoman']]
   }
 
+  service { 'nsrexecd':
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    hasstatus  => true,
+    require    => [
+      Package['lgtoclnt'],
+      Package['lgtoman']]
+  }
+
 }
