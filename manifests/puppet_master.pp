@@ -9,7 +9,6 @@ class site::puppet_master (
   file { "${backup_folder}/foreman/":
     ensure  => 'directory',
     owner   => 'foreman',
-    require => User['foreman'],
   }
 
   file { [
