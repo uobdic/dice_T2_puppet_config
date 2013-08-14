@@ -34,7 +34,7 @@ class site::puppet_master (
   }
 
   cron { puppet_backup:
-    command => "/bin/tar czf ${backup_folder}/puppet_`date +\\%d_\\%m_\\%Y_\\%H.\\%M`.tar.gz /etc/puppet ",
+    command => "/bin/tar czf ${backup_folder}/puppet/puppet_`date +\\%d_\\%m_\\%Y_\\%H.\\%M`.tar.gz /etc/puppet ",
     user    => root,
     hour    => '*/8',
   }
