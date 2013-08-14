@@ -11,6 +11,7 @@
 		<project>puppet-frontiersquid</project>
 		<project>puppet-motd</project>
 		<project>puppetlabs-firewall</project>
+		<project>puppetlabs-stdlib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

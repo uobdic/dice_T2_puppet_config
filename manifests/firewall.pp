@@ -30,5 +30,7 @@ class site::firewall (
     require => Class['site::firewall::pre'],
   }
 
-  create_resources('firewall', $rules)
+  if !empty($rules) {
+    create_resources('firewall', $rules)
+  }
 }
