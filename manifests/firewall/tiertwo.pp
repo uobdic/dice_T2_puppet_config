@@ -10,4 +10,16 @@ class site::firewall::tiertwo {
     action      => 'drop',
     destination => '224.0.0.1',
   }
+  
+  firewall { '100 Trust DICE network':
+    proto  => 'all',
+    action => 'accept',
+    source => '10.132.0.0/16',
+  }
+  
+  firewall { '100 Trust SM network':
+    proto  => 'all',
+    action => 'accept',
+    source => '10.129.1.0/24',
+  }
 }
