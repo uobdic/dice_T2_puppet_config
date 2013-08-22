@@ -26,9 +26,7 @@ class site::puppet_master (
     user        => foreman,
     hour        => '*/8',
     minute      => 0,
-    environment => [
-      '/usr/bin',
-      '/bin'],
+    environment => 'PATH="/usr/bin:/bin"',
   }
 
   cron { postgresql_backup_cleanup:
@@ -36,7 +34,7 @@ class site::puppet_master (
     user        => root,
     hour        => '*/8',
     minute      => 0,
-    environment => ['/bin'],
+    environment => ['PATH="/bin"'],
   }
 
   cron { puppet_backup:
@@ -44,7 +42,7 @@ class site::puppet_master (
     user        => root,
     hour        => '*/8',
     minute      => 0,
-    environment => ['/bin'],
+    environment => ['PATH="/bin"'],
   }
 
   cron { puppet_backup_cleanup:
@@ -52,6 +50,6 @@ class site::puppet_master (
     user        => root,
     hour        => '*/8',
     minute      => 0,
-    environment => ['/bin'],
+    environment => ['PATH="/bin"'],
   }
 }
