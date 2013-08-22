@@ -7,8 +7,8 @@ class site::puppet_master (
   $backup_folder = '/backup') {
   # create backup folders
   file { "${backup_folder}/foreman/":
-    ensure  => 'directory',
-    owner   => 'foreman',
+    ensure => 'directory',
+    owner  => 'foreman',
   }
 
   file { [
@@ -25,23 +25,27 @@ class site::puppet_master (
     command => "/usr/bin/pg_dump &> ${backup_folder}/foreman/pg_dump_`date +\\%d_\\%m_\\%Y_\\%H.\\%M`.txt",
     user    => foreman,
     hour    => '*/8',
+    minute  => 0,
   }
 
   cron { postgresql_backup_cleanup:
     command => "find ${backup_folder}/foreman/pg_dump* -mtime +3 -exec rm {} \\;",
     user    => root,
     hour    => '*/8',
+    minute  => 0,
   }
 
   cron { puppet_backup:
     command => "/bin/tar czf ${backup_folder}/puppet/puppet_`date +\\%d_\\%m_\\%Y_\\%H.\\%M`.tar.gz /etc/puppet ",
     user    => root,
     hour    => '*/8',
+    minute  => 0,
   }
 
   cron { puppet_backup_cleanup:
     command => "find ${backup_folder}/puppet/puppet_* -mtime +3 -exec rm {} \\;",
     user    => root,
     hour    => '*/8',
+    minute  => 0,
   }
 }
