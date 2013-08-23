@@ -5,6 +5,6 @@
 # want to do the full Sys V style init stuff.
 
 route add default gw 10.132.0.250
-route add default gw 10.132.0.251 metric 1z
+route add default gw 10.132.0.251 metric 1
 
 touch /var/lock/subsys/local
