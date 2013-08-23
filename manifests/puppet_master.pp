@@ -33,7 +33,7 @@ class site::puppet_master (
     command     => "find ${backup_folder}/foreman/pg_dump* -mtime +3 -exec rm {} \\;",
     user        => root,
     hour        => '*/8',
-    minute      => 0,
+    minute      => 10,
     environment => ['PATH="/bin"'],
   }
 
@@ -49,7 +49,7 @@ class site::puppet_master (
     command     => "find ${backup_folder}/puppet/puppet_* -mtime +3 -exec rm {} \\;",
     user        => root,
     hour        => '*/8',
-    minute      => 0,
+    minute      => 10,
     environment => ['PATH="/bin"'],
   }
 }
