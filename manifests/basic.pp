@@ -54,4 +54,11 @@ class site::basic (
   if $use_firewall == true {
     class { 'site::firewall': rules => $firewall_rules, }
   }
+  
+  if $cluster == 'DICE' {
+    file { '/etc/rc.local': 
+      ensure => present,
+      source => 'puppet:///modules/site/rc.local', 
+    }
+  }
 }
