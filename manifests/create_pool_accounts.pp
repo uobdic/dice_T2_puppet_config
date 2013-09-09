@@ -10,7 +10,7 @@ class site::create_pool_accounts (
   $create_home_dir         = true,
   $create_gridmapdir_entry = false) {
   if $create_gridmapdir_entry {
-    file { "/etc/grid-security/gridmapdir": ensure => "directory", }
+    file { '/etc/grid-security/gridmapdir': ensure => 'directory', }
   }
 
   $defaults = {

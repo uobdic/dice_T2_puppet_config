@@ -1,6 +1,6 @@
 class site::params (
   $test_message = undef) {
-  $cluster           = "DICE"
+  $cluster           = 'DICE'
   # CVMFS specific parameters for the site
   $cvmfs_version     = present # or latest if you have faith
   $cvmfs_quota_limit = 20000
@@ -14,7 +14,7 @@ class site::params (
   $repositories      = {
     'epel' => {
       descr       => "Extra Packages for Enterprise Linux 6${$major_release}",
-      mirrorlist  => "https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=x86_64",
+      mirrorlist  => 'https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=x86_64',
       gpgcheck    => 1,
       gpgkey      => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CernVM',
       enabled     => 0,
@@ -24,7 +24,7 @@ class site::params (
     }
   }
 
-  $for_testing       = "default"
+  $for_testing       = 'default'
 
   if $test_message != undef {
     $for_testing = $test_message
@@ -34,12 +34,12 @@ class site::params (
   $java_version    = '1.6.0_43-fcs'
 
   $basic_packages  = {
-    "nano"    => {},
-    "yum"     => {},
-    "git"     => {},
-    "wget"    => {},
-    "mlocate" => {},
-    "man"     => {},
+    'nano'    => {},
+    'yum'     => {},
+    'git'     => {},
+    'wget'    => {},
+    'mlocate' => {},
+    'man'     => {},
   }
 
   $syslog          = $major_release ? {

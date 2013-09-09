@@ -6,7 +6,7 @@ class site::reverse_proxy (
     chain    => 'POSTROUTING',
     jump     => 'MASQUERADE',
     proto    => 'all',
-    outiface => "em2",
+    outiface => 'em2',
     source   => '10.132.0.0/16',
     table    => 'nat',
   }
@@ -15,7 +15,7 @@ class site::reverse_proxy (
     chain    => 'POSTROUTING',
     jump     => 'SNAT',
     proto    => 'all',
-    outiface => "em2",
+    outiface => 'em2',
     tosource => $::ipaddress_em2,
     table    => 'nat',
   }
@@ -24,7 +24,7 @@ class site::reverse_proxy (
     chain    => 'FORWARD',
     action   => 'accept',
     proto    => 'all',
-    outiface => "em2",
+    outiface => 'em2',
     source   => '10.132.0.0/16',
   }
 
@@ -32,7 +32,7 @@ class site::reverse_proxy (
     chain       => 'FORWARD',
     action      => 'accept',
     proto       => 'all',
-    iniface     => "em2",
+    iniface     => 'em2',
     state       => [
       'ESTABLISHED',
       'RELATED'],

@@ -1,8 +1,8 @@
 class site::apel_publisher (
-  $site_name                 = "UKI-SOUTHGRID-XXX-HEP",
-  $mysql_root_password       = "changeme",
-  $mysql_backup_folder       = "/tmp/mysql_backup",
-  $mysql_apel_password       = "pleasechangeme",
+  $site_name                 = 'UKI-SOUTHGRID-XXX-HEP',
+  $mysql_root_password       = 'changeme',
+  $mysql_backup_folder       = '/tmp/mysql_backup',
+  $mysql_apel_password       = 'pleasechangeme',
   $list_of_apel_parser_hosts = [
     ],) inherits site::params {
   yumhelper::modify { 'enable-epel':

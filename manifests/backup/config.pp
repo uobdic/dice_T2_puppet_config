@@ -1,6 +1,6 @@
 class site::backup::config inherits site::params {
   file { '/.nsr':
-    notify  => Service["networker"],
+    notify  => Service['networker'],
     source  => "puppet:///modules/${module_name}/nsr",
     require => [
       Package['lgtoclnt'],
