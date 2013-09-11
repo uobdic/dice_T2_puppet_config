@@ -9,6 +9,7 @@ class site::basic (
     'git' => {},
     'wget' => {},
     'mlocate' => {},
+    'bind-utils' => {},
   },
   $firewall_rules = {},
   $use_firewall = false,
