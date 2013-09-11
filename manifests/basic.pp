@@ -60,5 +60,9 @@ class site::basic (
       ensure => present,
       source => 'puppet:///modules/site/rc.local', 
     }
+    
+    file {'/etc/hosts':
+      ensure => present,
+      source => 'puppet:///modules/site/hosts',}
   }
 }
