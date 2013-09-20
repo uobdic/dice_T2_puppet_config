@@ -1,5 +1,5 @@
 rules = open('rules.txt')
-i = 200
+i = 500
 for rule in rules.readlines():
     if rule.startswith('#'):
         continue
