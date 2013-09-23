@@ -17,7 +17,7 @@
 #
 # Sample Usage:
 #
-class create_grid_pool_accounts (
+class site::create_grid_pool_accounts (
   $grid_groups   = {
   }
   ,
