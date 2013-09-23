@@ -24,6 +24,10 @@
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": "\u003e\u003d4.1.0"
+    },
+    {
+      "name": "kreczko/grid_pool_accounts",
+      "version_requirement": "\u003e\u003d0.0.1"
     }
   ],
   "types": [],
