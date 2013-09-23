@@ -28,7 +28,7 @@ class site::create_grid_pool_accounts (
   $create_home_directories = true,) {
   create_resources('grid_pool_accounts::pool_group', $grid_groups)
   $defaults = {
-    'manage_home' => $create_home_directories,
+    'create_home_dir' => $create_home_directories,
   }
   create_resources('grid_pool_accounts', $grid_accounts, $defaults)
 
