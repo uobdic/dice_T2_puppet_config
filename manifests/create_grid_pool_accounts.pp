@@ -11,6 +11,9 @@
 #           user_ID_number_start    = 70000,
 #           user_ID_number_end    = 70010,
 #         primary_group => 'cms'
+# $create_home_directories - if a home directory should be created: true|false
+# $other_grid_accounts non-numbered grid accounts:
+# {cmsprod => { uid => xxxxx}, ...}
 #
 # Actions:
 #
@@ -19,17 +22,21 @@
 # Sample Usage:
 #
 class site::create_grid_pool_accounts (
-  $grid_groups            = {
+  $grid_groups             = {
   }
   ,
-  $grid_accounts          = {
+  $grid_accounts           = {
   }
   ,
-  $create_home_directories = true,) {
+  $create_home_directories = true,
+  $other_grid_accounts     = {
+  }
+  ,) {
   create_resources('grid_pool_accounts::pool_group', $grid_groups)
   $defaults = {
     'create_home_dir' => $create_home_directories,
   }
   create_resources('grid_pool_accounts', $grid_accounts, $defaults)
-
+  create_resources('grid_pool_accounts::pool_account', $other_grid_accounts, 
+  $defaults)
 }
