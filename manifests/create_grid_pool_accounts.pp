@@ -24,7 +24,7 @@ class site::create_grid_pool_accounts (
   $grid_accounts = {
   }
 ) {
-  create_resources('pool_group', $grid_groups)
+  create_resources('grid_pool_accounts::pool_group', $grid_groups)
   create_resources('grid_pool_accounts', $grid_accounts)
 
 }
