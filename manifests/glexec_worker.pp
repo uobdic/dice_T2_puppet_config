@@ -9,6 +9,7 @@ class site::glexec_worker (
   $gridmapdir         = '/etc/grid-security/gridmapdir',
   $grid_env_location  = '/usr/libexec',
   $gt_proxy_mode      = 'old',
+  $install_dummydpm   = false,
   $myproxy_server     = 'localhost',
   $lcg_gfal_infosys   = 'unset',
   $lcg_location       = '/usr',
