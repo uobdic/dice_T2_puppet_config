@@ -28,6 +28,10 @@
     {
       "name": "kreczko/grid_pool_accounts",
       "version_requirement": "\u003e\u003d0.0.1"
+    },
+    {
+      "name": "cernops/glexecwn",
+      "version_requirement": "\u003e\u003d0.0.1"
     }
   ],
   "types": [],
