@@ -1,6 +1,7 @@
 class site::glexec_worker (
   $argus_port         = '8154',
   $argus_server       = 'localhost',
+  $emi_version        = 3,
   $glexec_location    = '/usr',
   $glite_env_set      = true,
   $glite_location     = '/usr',
@@ -30,6 +31,7 @@ class site::glexec_worker (
   class { 'glexecwn':
     argus_port         => $argus_port,
     argus_server       => $argus_server,
+    emi_version        => $emi_version,
     glexec_location    => $glexec_location,
     glite_env_set      => $glite_env_set,
     glite_location     => $glite_location,
