@@ -26,7 +26,38 @@ class site::worker_node (
 
   cvmfs::mount { 'atlas.cern.ch': cvmfs_quota_limit => 20000 }
 
-  cvmfs::mount { 'cms.cern.ch': cvmfs_quota_limit => 20000 }
+  cvmfs::mount { 'cms.cern.ch':
+    cvmfs_quota_limit   => 20000,
+    cvmfs_env_variables => {
+      'CMS_LOCAL_SITE' => '/opt/cvmfs/cms.cern.ch/SITECONF/local'
+    }
+    ,
+    require             => [
+      File['/opt/cvmfs/cms.cern.ch/SITECONF/local/JobConfig/site-local-config.xml'
+        ],
+      File['/opt/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml'],
+      ]
+  }
+
+  file { [
+    '/opt/cvmfs',
+    '/opt/cvmfs/cms.cern.ch',
+    '/opt/cvmfs/cms.cern.ch/SITECONF',
+    '/opt/cvmfs/cms.cern.ch/SITECONF/local',
+    '/opt/cvmfs/cms.cern.ch/SITECONF/local/JobConfig',
+    '/opt/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx',
+    ]:
+    ensure => directory,
+  } ->
+  file { '/opt/cvmfs/cms.cern.ch/SITECONF/local/JobConfig/site-local-config.xml'
+  :
+    ensure => present,
+    source => 'puppet:///modules/site/site-local-config.xml',
+  } ->
+  file { '/opt/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml':
+    ensure => present,
+    source => 'puppet:///modules/site/storage.xml',
+  }
 
   cvmfs::mount { 'grid.cern.ch': cvmfs_quota_limit => 1000 }
 
