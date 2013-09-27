@@ -40,6 +40,8 @@ class site::glexec_worker (
     gridmapdir         => $gridmapdir,
     grid_env_location  => $grid_env_location,
     gt_proxy_mode      => $gt_proxy_mode,
+    install_dummydpm   => false,
+    install_emi_wn     => false,
     myproxy_server     => $myproxy_server,
     lcg_gfal_infosys   => $lcg_gfal_infosys,
     lcg_location       => $lcg_location,
