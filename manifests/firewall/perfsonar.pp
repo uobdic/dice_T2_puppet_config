@@ -34,7 +34,7 @@ class site::firewall::perfsonar (
   firewall { '203 PingER':
     proto  => [
       tcp,
-      imcp,
+      icmp,
       ],
     action => accept,
     port   => 8075,
