@@ -1,0 +1,23 @@
+. /etc/profile.d/grid-env.sh
+. /etc/profile.d/grid-vo-env.sh
+
+# TODO: Fetch this from arc.conf
+x509_cert_dir="/etc/grid-security/certificates" #set to local repository of known certificates
+
+# 0 : During LRMS script creation (on the front-end)
+# 1 : Before running executable (on worker node)
+# 2 : After running executable (on worker node)
+
+case $1 in
+     # On the front-end: copy certificates to session directory
+  0) umask 0077                                         #bug work around. No longer needed in next arc release, but does no harm.
+     mkdir -pv $joboption_directory/arc/certificates/
+     cp -rv $x509_cert_dir/ $joboption_directory/arc
+     ;;
+  1) export X509_USER_PROXY=`pwd`/user.proxy
+     export X509_USER_CERT=`pwd`/user.proxy
+     export X509_CERT_DIR=`pwd`/arc/certificates
+     ;;
+  2) :
+     ;;
+esac
