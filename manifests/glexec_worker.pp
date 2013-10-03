@@ -19,6 +19,14 @@ class site::glexec_worker (
   $site_name          = 'EXAMPLE',
   $srm_path           = '',
   $supported_vos      = [],
+  $vo_environments    = {
+    'cms' => {
+      'vo_sw_dir' => '/cvmfs/cms.cern.ch',
+      'voname'    => 'cms',
+    }
+  }
+  ,
+  $default_se         = unset,
   $user_white_list    = ' ',) {
   yumhelper::modify { 'enable-epel-for-glexecwn':
     repository => 'epel',
@@ -57,4 +65,10 @@ class site::glexec_worker (
   Yumhelper::Modify['enable-epel-for-glexecwn'] -> Class['glexecwn'] ->
   Yumhelper::Modify['disable-epel-for-glexecwn']
 
+  # needs voname,vo_sw_dir and vo_default_se
+  $defaults = {
+    'vo_default_se' => $default_se,
+  }
+
+  create_resources('vosupport::voenv', $vo_environments, $defaults)
 }
