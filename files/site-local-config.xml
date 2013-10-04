@@ -19,7 +19,7 @@
       <command value="srmv2-lcg"/>
       <!-- <option value="-debug"/> -->
       <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=srmv2"/>
-      <se-name value="heplnx204.pp.rl.ac.uk"/>
+      <se-name value="heplnx229.pp.rl.ac.uk"/>
     </local-stage-out>
   <source-config>
     <statistics-destination name="cms-udpmon-collector.cern.ch:9331" />

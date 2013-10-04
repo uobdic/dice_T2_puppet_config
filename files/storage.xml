@@ -15,11 +15,11 @@
         <pfn-to-lfn protocol="file" chain="direct" path-match="(.*)" result="$1"/>
     <!-- End local file access -->
     <!-- Begin srm -->
-        <lfn-to-pfn protocol="srm" chain="direct" path-match="(.*)" result="srm://heplnx204.pp.rl.ac.uk:8443/srm/managerv1?SFN=$1"/>
+        <lfn-to-pfn protocol="srm" chain="direct" path-match="(.*)" result="srm://heplnx229.pp.rl.ac.uk:8443/srm/managerv1?SFN=$1"/>
         <pfn-to-lfn protocol="srm" chain="direct" path-match=".*\?SFN=(.*)" result="$1"/>
     <!-- End srm -->
     <!-- Begin srmv2 -->
-        <lfn-to-pfn protocol="srmv2" chain="direct" path-match="(.*)" result="srm://heplnx204.pp.rl.ac.uk:8443/srm/managerv2?SFN=$1"/>
+        <lfn-to-pfn protocol="srmv2" chain="direct" path-match="(.*)" result="srm://heplnx229.pp.rl.ac.uk:8443/srm/managerv2?SFN=$1"/>
         <pfn-to-lfn protocol="srmv2" chain="direct" path-match=".*\?SFN=(.*)" result="$1"/>
     <!-- End srmv2 -->
     <!-- Begin xroot -->
