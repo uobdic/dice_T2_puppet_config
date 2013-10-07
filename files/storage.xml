@@ -6,7 +6,6 @@
     <!-- End load test -->
     <!-- Production store -->
         <lfn-to-pfn protocol="direct" path-match="/+store/test/xrootd/T2_UK_SGrid_RALPP/store/(.*)" result="/pnfs/pp.rl.ac.uk/data/cms/store/$1"/>
-        <lfn-to-pfn protocol="direct" path-match="/+store/test/xrootd/T2_UK_SGrid_Bristol/store/(.*)" result="/pnfs/pp.rl.ac.uk/data/cms/store/$1"/>
         <lfn-to-pfn protocol="direct" path-match="/+store/(.*)" result="/pnfs/pp.rl.ac.uk/data/cms/store/$1"/>
         <pfn-to-lfn protocol="direct" path-match="/+pnfs/pp\.rl\.ac\.uk/data/cms/store/(.*)" result="/store/$1"/>
         <!-- End production store -->
@@ -23,7 +22,7 @@
         <pfn-to-lfn protocol="srmv2" chain="direct" path-match=".*\?SFN=(.*)" result="$1"/>
     <!-- End srmv2 -->
     <!-- Begin xroot -->
-        <lfn-to-pfn protocol="xroot" chain="direct" path-match="(.*)" result="root://heplnx229.pp.rl.ac.uk:1094$1"/>
+        <lfn-to-pfn protocol="xroot" chain="direct" path-match="(.*)" result="root://heplnx229.pp.rl.ac.uk:1094/$1"/>
         <pfn-to-lfn protocol="xroot" chain="direct" path-match=".*\:1094(.*)" result="$1"/>
     <!-- End xroot -->
     <!-- Begin xroot fallback-->
