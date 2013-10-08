@@ -22,7 +22,7 @@
         <pfn-to-lfn protocol="srmv2" chain="direct" path-match=".*\?SFN=(.*)" result="$1"/>
     <!-- End srmv2 -->
     <!-- Begin xroot -->
-    	<lfn-to-pfn protocol="xroot" path-match="/+store/test/xrootd/T2_UK_SGrid_Bristol/store/(.*)" result="/store/$1"/>
+    	<lfn-to-pfn protocol="xroot" path-match="/+store/test/xrootd/T2_UK_SGrid_RALPP/store/(.*)" result="/store/$1"/>
         <lfn-to-pfn protocol="xroot" path-match="(.*)" result="root://heplnx229.pp.rl.ac.uk:1094/$1"/>
         <pfn-to-lfn protocol="xroot" path-match=".*\:1094(.*)" result="$1"/>
     <!-- End xroot -->
