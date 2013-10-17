@@ -9,6 +9,7 @@
       <frontier-connect>
         <load balance="proxies"/>
         <proxy url="http://lcgsq1.phy.bris.ac.uk:3128"/>
+        <proxy url="http://lcgsq2.phy.bris.ac.uk:3128"/>
         <server url="http://cmsfrontier.cern.ch:8000/FrontierInt"/>
         <server url="http://cmsfrontier1.cern.ch:8000/FrontierInt"/>
         <server url="http://cmsfrontier2.cern.ch:8000/FrontierInt"/>
