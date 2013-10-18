@@ -1,4 +1,4 @@
-class site::worker_node_T2 {
+class site::worker_node_t2 {
   file { [
     '/opt/cvmfs',
     '/opt/cvmfs/cms.cern.ch',
