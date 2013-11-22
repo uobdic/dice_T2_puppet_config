@@ -1,0 +1,29 @@
+<storage-mapping>
+   <!-- LoadTest07 -->
+   <lfn-to-pfn protocol="direct" path-match=".*/LoadTest07_Bristol_(.*)_.*_.*" result="/gpfs_phys/storm/cms/PhEDEx_Debug/LoadTest07Source/LoadTest07_SouthGrid_Bristol_$1"/>
+   <lfn-to-pfn protocol="direct" path-match=".*/LoadTest07_SouthGrid_Bristol_(.*)_.*_.*" result="/gpfs_phys/storm/cms/PhEDEx_Debug/LoadTest07Source/LoadTest07_SouthGrid_Bristol_$1"/>
+   <pfn-to-lfn protocol="direct" path-match="/gpfs_phys/storm/cms/PhEDEx_Debug/LoadTest07Source/(.*)" result="/LoadTest/$1"/>
+   <lfn-to-pfn protocol="srmv2" path-match=".*/LoadTest07_.*_Bristol_(.*)_.*_.*" result="srm://lcgse02.phy.bris.ac.uk:8444/srm/managerv2?SFN=/cms/PhEDEx_Debug/LoadTest07Source/LoadTest07_SouthGrid_Bristol_$1"/>
+   <!-- End LoadTest07 -->
+	   
+   <!-- General Direct -->
+   <lfn-to-pfn protocol="direct" path-match="/+store/(.*)" result="/gpfs_phys/storm/cms/$1" />
+   <pfn-to-lfn protocol="direct" path-match=".*/+gpfs_phys/storm/cms/(.*)" result="/store/$1" />
+   <lfn-to-pfn protocol="direct" path-match="/+store/test/xrootd/T2_UK_SGrid_Bristol/store/(.*)" result="/gpfs_phys/storm/cms/$1" />
+   <!-- End General Direct -->
+
+   <!-- SRM2-->
+   <lfn-to-pfn protocol="srmv2" path-match="/+store/(.*)" result="srm://lcgse02.phy.bris.ac.uk:8444/srm/managerv2?SFN=/cms/$1"/>
+   <pfn-to-lfn protocol="srmv2" path-match=".*\?SFN=/cms/(.*)" result="/store/$1"/>
+   <!-- End SRM2 -->
+   
+   <!-- File -->
+   <lfn-to-pfn protocol="file" path-match="/+store/(.*)" result="file:/gpfs_phys/storm/cms/$1"/>
+   <pfn-to-lfn protocol="file" path-match="file:/+gpfs_phys/storm/cms/(.*)" result="/store/$1"/>
+   <!-- End File -->
+   
+   <!-- Begin xroot fallback-->
+   <lfn-to-pfn protocol="xrootdfallback" destination-match=".*" path-match="/+store/(.*)" result="root://xrootd.ba.infn.it//store/$1"/>
+   <!-- End xroot fallback-->
+</storage-mapping>
+
