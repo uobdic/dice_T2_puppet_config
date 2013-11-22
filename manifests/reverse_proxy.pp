@@ -39,7 +39,7 @@ class site::reverse_proxy (
     destination => '10.132.0.0/16',
   }
 
-  firewall { '150 forward port 80 to 8000':
+  firewall { '150 forward port 80 to 443':
     table   => 'nat',
     chain   => 'PREROUTING',
     jump    => 'REDIRECT',
