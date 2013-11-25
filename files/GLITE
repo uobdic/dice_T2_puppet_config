@@ -1,12 +1,20 @@
-. /etc/profile.d/grid-env.sh
-. /etc/profile.d/grid-vo-env.sh
-
 # TODO: Fetch this from arc.conf
 #x509_cert_dir="/etc/grid-security/certificates" #set to local repository of known certificates
 
 # 0 : During LRMS script creation (on the front-end)
 # 1 : Before running executable (on worker node)
 # 2 : After running executable (on worker node)
+
+case $1 in
+  0) :
+     ;;
+  1) . /etc/profile.d/grid-env.sh
+	 . /etc/profile.d/grid-vo-env.sh
+     ;;
+  2) :
+     ;;
+esac
+
 
 #case $1 in
 #     # On the front-end: copy certificates to session directory
