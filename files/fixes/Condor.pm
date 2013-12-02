@@ -240,7 +240,10 @@ sub condor_queue_get_nodes() {
 sub condor_queue_get_queued() {
     my $gridqueued = 0;
     my $localqueued = 0;
-    my $qfactor = condor_queue_get_nodes() / condor_cluster_totalcpus();
+    my $qfactor = 0;
+    if(condor_cluster_totalcpus() != 0){
+        $qfactor = condor_queue_get_nodes() / condor_cluster_totalcpus();
+    }
     for (values %alljobdata) {
         my %job = %$_;
         # only include jobs which are idle or held
@@ -322,27 +325,6 @@ sub condor_cluster_get_usedcpus() {
 }
 
 #
-# Counts running jobs (condor JobStatus == 2) submitted by Grid
-# into the current queue. 
-sub condor_queue_get_gridrunning() {
-    my $sum = 0;
-    my @qnod = condor_queue_get_nodes();
-    for (values %alljobdata) {
-        my %job = %$_;
-        next unless grep { $job{clusterid} eq $_ } @jobids_thisqueue;
-        next unless $job{jobstatus} == 2;
-        my $host = $job{remotehost};
-        $host = $job{lastremotehost} unless $host;
-        next unless $host;
-        # only count job if it's running in the current queue
-        $sum++ if grep { $host =~ /^((vm|slot)\d+@)?$_/i } @qnod;
-
-    }
-    debug "===condor_queue_get_gridrunning: $sum";
-    return $sum;
-}
-
-#
 # returns the total number of nodes in the cluster
 #
 sub condor_cluster_totalcpus() {
@@ -383,7 +365,8 @@ sub cpudistribution {
     # (or 'vm1@', 'vm2@' in older Condor releases)
     my %machines;
     #$machines{$$_{machine}}++ for @allnodedata;
-	$machines{$$_{machine}} = $$_{totalcpus} for @allnodedata;
+    $machines{$$_{machine}} = $$_{totalcpus} for @allnodedata;
+
     # Count number of machines with one CPU, number with two, etc.
     my %dist;
     for (keys %machines) {
@@ -487,15 +470,18 @@ sub queue_info ($$) {
     # nordugrid-queue-maxuserrun
     # nordugrid-queue-mincputime
     # nordugrid-queue-defaultcputime
+    #for some reason this is 11 (we have 12 nodes with 16 cores each)
     $lrms_queue{maxrunning} = scalar condor_queue_get_nodes();
     $lrms_queue{maxqueuable} = 2 * $lrms_queue{maxrunning};
     $lrms_queue{maxuserrun} = $lrms_queue{maxrunning};
-    $lrms_queue{maxwalltime} = '4320';
+
+    $lrms_queue{maxwalltime} = '6480';
     $lrms_queue{minwalltime} = '0';
     $lrms_queue{defaultwallt} = '2880';
-    $lrms_queue{maxcputime} = '4320';
+    $lrms_queue{maxcputime} = '6480';
     $lrms_queue{mincputime} = '0';
     $lrms_queue{defaultcput} = '2880';
+
     $lrms_queue{status} = 1;
 
     return %lrms_queue;

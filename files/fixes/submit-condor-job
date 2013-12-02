@@ -153,7 +153,7 @@ sub run_rte0 {
 
         # source RTE script
 #        $script .= ". \Q$ENV{RUNTIME_CONFIG_DIR}/$r\E 0 $r_args>&2\n";
-        $script .= "\nsourcewithargs() {\n script=\$1;shift;. \$script\n } ; sourcewithargs \Q$ENV{RUNTIME_CONFIG_DIR}/$r\E 0 $r_args>&2\n";
+        $script .= "\nsourcewithargs() {\n script=\$1;shift;. \$script\n } ; sourcewithargs \Q$ENV{RUNTIME_CONFIG_DIR}/$r\E 0 $r_args >&2\n";
         $script .= "ret=\$?\n";
 
         # print joboption_* variables to stdout. First export them, then use perl for printing.
@@ -381,6 +381,8 @@ sub create_condor_job_description {
                  "Input = $grami{joboption_stdin}\n";
 
     $output .= "Log = $condor_log\n";
+    #$output .= "Output = $grami{joboption_directory}.comment\n";
+    #$output .= "Error = $grami{joboption_directory}.comment\n";
     my $file_stdout = notnull($grami{joboption_stdout}) ? $grami{joboption_stdout} : $grami{joboption_directory}.".comment";
     my $file_stderr = notnull($grami{joboption_stderr}) ? $grami{joboption_stderr} : $grami{joboption_directory}.".comment";
 
@@ -428,6 +430,10 @@ sub create_condor_job_description {
 
     if (@requirements) {
         $output .= "Requirements = (" . (join ") && (", @requirements) . ")\n";
+    }
+
+    if($grami{joboption_exclusivenode} eq "true"){
+        $output .= "+RequiresWholeMachine=True\n";
     }
 
     # Option to force Condor to transfer of input and output files by itself
@@ -492,12 +498,13 @@ sub create_condor_job_description {
     $grami{joboption_memory} ||= $config{defaultmemory} || $config{service}{defaultmemory} || $config{MaxVirtualMemory} || $config{service}{MaxVirtualMemory} || 1000;
     $output .= "+JobMemoryLimit = ".int(1024*$grami{joboption_memory})."\n";
     $remove .= " || ResidentSetSize > JobMemoryLimit";
-#    $remove .= " || ImageSize > JobMemoryLimit";
     warn "$0: Setting memory limit\n";
 
+    $output .= "request_memory = $grami{joboption_memory}\n";
+    $output .= "request_cpus = $grami{joboption_count}\n";
     $output .= "GetEnv = True\n" .
                "Universe = vanilla\n" .
-               "Notification = Always\n" .
+               "Notification = Never\n" .
 #              "When_to_transfer_output = ON_EXIT\n" .
                "Periodic_remove = $remove\n" .
                "Queue\n";
