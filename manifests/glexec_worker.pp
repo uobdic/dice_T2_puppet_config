@@ -71,11 +71,6 @@ class site::glexec_worker (
   }
 
   create_resources('vosupport::voenv', $vo_environments, $defaults)
-
-  file { '/etc/arc/runtime/ENV/GLITE':
-    ensure => present,
-    source => 'puppet:///modules/site/GLITE',
-  }
-
+  
   file { '/usr/etc/globus-user-env.sh': ensure => present, }
 }
