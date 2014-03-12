@@ -381,30 +381,8 @@ sub create_condor_job_description {
                  "Input = $grami{joboption_stdin}\n";
 
     $output .= "Log = $condor_log\n";
-    #$output .= "Output = $grami{joboption_directory}.comment\n";
-    #$output .= "Error = $grami{joboption_directory}.comment\n";
-    my $file_stdout = notnull($grami{joboption_stdout}) ? $grami{joboption_stdout} : $grami{joboption_directory}.".comment";
-    my $file_stderr = notnull($grami{joboption_stderr}) ? $grami{joboption_stderr} : $grami{joboption_directory}.".comment";
-
-    $output .= "Log = $condor_log\n";
-    if ($file_stdout =~ /_condor_stdout/)
-    {
-       $output .= "Output = $file_stdout\n";
-    }
-    else
-    {
-       $output .= "Output = $grami{joboption_directory}.comment\n";
-
-    }
-
-    if ($file_stderr =~ /_condor_stderr/)
-    {
-       $output .= "Error = $file_stderr\n";
-    }
-    else
-    {
-       $output .= "Error = $grami{joboption_directory}.comment\n";
-    }
+    $output .= "Output = $grami{joboption_directory}.comment\n";
+    $output .= "Error = $grami{joboption_directory}.comment\n";
 
     my @requirements = ();
 

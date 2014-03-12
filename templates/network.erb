@@ -1,5 +1,18 @@
+###
+### File managed by Puppet
+###
 NETWORKING=yes
-HOSTNAME=<%= fqdn %>
 NETWORKING_IPV6=no
-NOZEROCONF=yes
-GATEWAY=137.222.79.250
+<% if !@hostname.empty? %>HOSTNAME=<%= @hostname %>
+<% else %>HOSTNAME=<%= fqdn %>
+<% end -%>
+<% if !@gateway.empty? %>GATEWAY=<%= @gateway %>
+<% end -%>
+<% if !@gatewaydev.empty? %>GATEWAYDEV=<%= @gatewaydev %>
+<% end -%>
+<% if !@nisdomain.empty? %>NISDOMAIN=<%= @nisdomain %>
+<% end -%>
+<% if !@vlan.empty? %>VLAN=<%= @vlan %>
+<% end -%>
+<% if !@nozeroconf.empty? %>NOZEROCONF=<%= @nozeroconf %>
+<% end -%>

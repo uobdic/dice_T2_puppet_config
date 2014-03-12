@@ -1,5 +1,5 @@
 #https://github.com/thias/puppet-resolvconf
-class site::resolvconf (
+class site::network::resolvconf (
   $header     = 'This file is managed by Puppet, do not edit',
   $nameserver = [],
   $domain     = '',

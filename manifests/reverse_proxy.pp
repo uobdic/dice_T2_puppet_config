@@ -2,14 +2,14 @@ class site::reverse_proxy (
   $service_ports = {
   }
 ) {
-  firewall { '100 snat for network DICE':
-    chain    => 'POSTROUTING',
-    jump     => 'MASQUERADE',
-    proto    => 'all',
-    outiface => 'em2',
-    source   => '10.132.0.0/16',
-    table    => 'nat',
-  }
+  #  firewall { '100 snat for network DICE':
+  #    chain    => 'POSTROUTING',
+  #    jump     => 'MASQUERADE',
+  #    proto    => 'all',
+  #    outiface => 'em2',
+  #    source   => '10.132.0.0/16',
+  #    table    => 'nat',
+  #  }
 
   firewall { '101 snat for network DICE':
     chain    => 'POSTROUTING',
@@ -33,9 +33,7 @@ class site::reverse_proxy (
     action      => 'accept',
     proto       => 'all',
     iniface     => 'em2',
-    state       => [
-      'ESTABLISHED',
-      'RELATED'],
+    state       => ['ESTABLISHED', 'RELATED'],
     destination => '10.132.0.0/16',
   }
 
@@ -44,6 +42,7 @@ class site::reverse_proxy (
     chain   => 'PREROUTING',
     jump    => 'REDIRECT',
     proto   => 'tcp',
+    iniface => 'em2',
     dport   => 80,
     toports => 443
   }
