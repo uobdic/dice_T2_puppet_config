@@ -62,10 +62,6 @@ class site::base (
 
   package { $remove_packages: ensure => absent, }
 
-  if ($cluster == 'DICE') {
-
-  }
-
   # bash_profile for useful aliases etc.
   file { '/root/.bash_profile':
     source  => 'puppet:///modules/site/bash_profile',
