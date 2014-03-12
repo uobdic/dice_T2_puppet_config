@@ -60,10 +60,12 @@ class site::glexec_worker (
     srm_path           => $srm_path,
     supported_vos      => $supported_vos,
     user_white_list    => $user_white_list,
+    before => Yumhelper::Modify['disable-epel-for-glexecwn'],
+    require => Yumhelper::Modify['enable-epel-for-glexecwn'],
   }
 
-  Yumhelper::Modify['enable-epel-for-glexecwn'] -> Class['glexecwn'] ->
-  Yumhelper::Modify['disable-epel-for-glexecwn']
+#  Yumhelper::Modify['enable-epel-for-glexecwn'] -> Class['glexecwn'] ->
+#  Yumhelper::Modify['disable-epel-for-glexecwn']
 
   # needs voname,vo_sw_dir and vo_default_se
   $defaults = {

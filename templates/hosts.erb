@@ -1,0 +1,10 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+<% host_aliases.each do |host| -%>
+<% if host.has_key('alias') %>
+<%= host['ipaddress'] %> <%= host['fqdn'] -%> <%= host['alias'] -%>
+<% else -%>
+<%= host['ipaddress'] %> <%= host['fqdn'] -%>
+<% end -%>
+<% end -%>

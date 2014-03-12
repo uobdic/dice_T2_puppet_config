@@ -21,7 +21,7 @@ class site::basic (
     group  => 'root',
     ensure => 'present',
   }
-  
+
   class{'site::puppet': }
 
   #############################
@@ -46,7 +46,7 @@ class site::basic (
     require => Package['puppet'],
   }
 
-  class { 'site::resolvconf':
+  class { 'site::network::resolvconf':
     nameserver => $nameserver,
     search     => $search,
   }
@@ -55,13 +55,13 @@ class site::basic (
   if $use_firewall == true {
     class { 'site::firewall': rules => $firewall_rules, }
   }
-  
+
   if $cluster == 'DICE' {
-    file { '/etc/rc.local': 
+    file { '/etc/rc.local':
       ensure => present,
-      source => 'puppet:///modules/site/rc.local', 
+      source => 'puppet:///modules/site/rc.local',
     }
-    
+
     file {'/etc/hosts':
       ensure => present,
       source => 'puppet:///modules/site/hosts',}
