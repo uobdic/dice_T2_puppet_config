@@ -1,0 +1,33 @@
+#!/usr/bin/env python
+# condor submit wrapper script
+from subprocess import call
+import sys
+import getpass
+
+group_map = {
+             'hep' : ['phxlk', 'phzss'],
+             'astro' : [],
+             'jonas' : [],
+             }
+
+def main():
+    args = sys.argv
+    args[0] = '/usr/bin/condor_submit'
+    # inject arguments here
+    args.extend(['-name', 'lcgce02.phy.bris.ac.uk'])
+    user = getpass.getuser()
+    args.append('+AccountingGroup ="' + get_accounting_group(user) + '"')
+    print args
+    call(args)
+
+def get_accounting_group(user):
+    base = 'group_physics.'
+    group = ''
+    
+    for group, users in group_map.iteritems():
+        if user in users:
+            group = base + group
+    return group + '.' + user
+
+if __name__ == '__main__':
+    main()
