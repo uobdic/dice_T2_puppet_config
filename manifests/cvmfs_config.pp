@@ -31,19 +31,15 @@ class site::cvmfs_config (
   # CVMFS should be available on all worker nodes
   # For now disabled for T2
   ################################################
-  class { 'cvmfs::install':
-  }
-  create_resources('cvmfs::mount', $cvmfs_mounts)
-
-  class { 'cvmfs::config':
+  class { 'cvmfs':
     cvmfs_quota_limit => $cvmfs_quota_limit,
     cvmfs_http_proxy  => $cvmfs_http_proxy,
-    cvmfs_server_url  => $cvmfs_server_url,
     cvmfs_cache_base  => $cvmfs_cache_base,
   }
-
-  class { 'cvmfs::service':
+  $defaults = {
+    'cvmfs_server_url' => $cvmfs_server_url,
   }
+  create_resources('cvmfs::mount', $cvmfs_mounts)
 
   # create folder structure for local site configuration
   file { [

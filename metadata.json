@@ -10,7 +10,7 @@
       "version_requirement": "\u003e\u003d0.1.4"
     },
     {
-      "name": "traylenator/cvmfs",
+      "name": "cernops/cvmfs",
       "version_requirement": "\u003e\u003d0.0.2"
     },
     {
