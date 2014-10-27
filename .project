@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>apelpublisher</project>
+		<project>hep-cvmfs</project>
 		<project>puppet-account</project>
 		<project>puppet-cvmfs</project>
 		<project>puppet-dhcp</project>
