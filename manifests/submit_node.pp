@@ -24,7 +24,7 @@ class site::submit_node (
   ,
   $cvmfs_quota_limit = $site::params::cvmfs_quota_limit,
   $cvmfs_server_url  = $site::params::cvmfs_server_url,) {
-  class { 'site::cvmfs':
+  class { 'site::cvmfs_config':
     cvmfs_quota_limit => $cvmfs_quota_limit,
     cvmfs_http_proxy  => $cvmfs_http_proxy,
     cvmfs_server_url  => $cvmfs_server_url,
