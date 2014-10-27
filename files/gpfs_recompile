@@ -1,0 +1,60 @@
+#!/bin/sh
+# this still needs work - what about when the WN is being 
+# built & boots on 74-subnet w/out gpfs installed???
+#
+# recompile-gpfs       Recompiles gpfs if kernel update
+#
+# chkconfig: 345 57 22
+# description: recompiles gpfs if kernel update (NOT downgrade)
+#
+# new modules compiled: check: 
+# lth /usr/lpp/mmfs/bin
+# but make a flag file in /lib/modules/`uname -r`
+
+
+# Source function library.
+. /etc/init.d/functions
+
+# See how we were called.
+case "$1" in
+  start)
+
+# if newly built-WN, gpfs isn't installed
+test ! -d /usr/lpp/mmfs/bin  && exit 0
+
+test -f /lib/modules/`uname -r`/gpfs.has.been.recompiled && exit 0
+
+# if flag file doesn't exist, recompile gpfs for new kernel
+# Note: not a lot of error-checking going on...
+
+#echo "service gpfs stop" # It IS true that gpfs might start w/out recompile
+
+#service gpfs stop
+
+/bin/cp -p /etc/redhat-release{,.orig}
+
+echo "Red Hat Enterprise Linux AS release 5" > /etc/redhat-release
+export SHARKCLONEROOT=/usr/lpp/mmfs/src
+cd $SHARKCLONEROOT
+make clean
+/bin/rm config/site.mcr
+
+make Autoconfig
+# normal/good output: 
+# cd config; ./configure; exit $? || exit 1;
+
+make World 
+make InstallImages
+
+# Restore SL not RH
+/bin/cp -p /etc/redhat-release{.orig,}; /bin/rm /etc/redhat-release.orig
+
+touch /lib/modules/`uname -r`/gpfs.has.been.recompiled
+
+        ;;  # end of start
+  stop) # do nothing
+        ;;
+
+esac
+
+exit 0
