@@ -45,7 +45,7 @@ class site::worker_node (
   ################################################
   # CVMFS should be available on all worker nodes
   ################################################
-  class { 'site::cvmfs':
+  class { 'site::cvmfs_config':
     cvmfs_quota_limit => $cvmfs_quota_limit,
     cvmfs_http_proxy  => $cvmfs_http_proxy,
     cvmfs_server_url  => $cvmfs_server_url,

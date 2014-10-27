@@ -16,16 +16,12 @@ class site::test_node (
       require => Yumrepo['bristol'],
     }
   }
-  
+
   #############################
   # yum repositories
   #############################
   class{'site::yum_repositories':
     repositories => $yum_repositories,
   }
-  
-  yumhelper::modify { 'disable-epel':
-    repository => 'epel',
-    enable     => false,
-  }
+
 }

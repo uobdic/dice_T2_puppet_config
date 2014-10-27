@@ -1,4 +1,4 @@
-class site::cvmfs (
+class site::cvmfs_config (
   $cvmfs_cache_base  = $site::params::cvmfs_cache_base,
   $cvmfs_http_proxy  = $site::params::cvmfs_http_proxy,
   $cvmfs_mounts      = {
