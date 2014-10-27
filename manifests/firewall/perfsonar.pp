@@ -6,7 +6,6 @@ class site::firewall::perfsonar (
     '137.138.0.0/17',
     '137.222.10.36',
     '192.41.231.110'],) {
-
   firewall { '201 SNMP MA':
     proto  => tcp,
     action => accept,
@@ -98,6 +97,7 @@ class site::firewall::perfsonar (
 
   # need to open 80 and 443 to trusted networks
   $ports = [80, 443]
+
   firewall { '220 For the web service interface S1':
     proto  => tcp,
     action => accept,
