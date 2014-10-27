@@ -24,6 +24,7 @@ class site::submit_node (
   ,
   $cvmfs_quota_limit = $site::params::cvmfs_quota_limit,
   $cvmfs_server_url  = $site::params::cvmfs_server_url,) {
+  class { 'concat::setup' : }
   class { 'site::cvmfs_config':
     cvmfs_quota_limit => $cvmfs_quota_limit,
     cvmfs_http_proxy  => $cvmfs_http_proxy,
