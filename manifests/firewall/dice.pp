@@ -29,7 +29,7 @@ class site::firewall::dice {
   firewall { '103 Trust internal network':
     proto  => 'all',
     action => 'accept',
-    source => '10.132.0.0/16',
+    source => '10.129.5.0/24',
   }
 
   firewall { '104 drop all-systems.mcast.net':
