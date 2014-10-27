@@ -1,6 +1,6 @@
 class site::basic (
   $cluster = $site::params::cluster,
-  $yum_repositories = [],
+  $yum_repositories = {},
   $nameserver = [],
   $search = [],
   $packages = {

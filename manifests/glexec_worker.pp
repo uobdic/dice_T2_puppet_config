@@ -28,16 +28,6 @@ class site::glexec_worker (
   ,
   $default_se         = unset,
   $user_white_list    = ' ',) {
-  yumhelper::modify { 'enable-epel-for-glexecwn':
-    repository => 'epel',
-    enable     => true,
-  }
-
-  yumhelper::modify { 'disable-epel-for-glexecwn':
-    repository => 'epel',
-    enable     => false,
-  }
-
   class { 'glexecwn':
     argus_port         => $argus_port,
     argus_server       => $argus_server,
@@ -60,12 +50,7 @@ class site::glexec_worker (
     srm_path           => $srm_path,
     supported_vos      => $supported_vos,
     user_white_list    => $user_white_list,
-    before => Yumhelper::Modify['disable-epel-for-glexecwn'],
-    require => Yumhelper::Modify['enable-epel-for-glexecwn'],
   }
-
-#  Yumhelper::Modify['enable-epel-for-glexecwn'] -> Class['glexecwn'] ->
-#  Yumhelper::Modify['disable-epel-for-glexecwn']
 
   # needs voname,vo_sw_dir and vo_default_se
   $defaults = {
@@ -73,6 +58,25 @@ class site::glexec_worker (
   }
 
   create_resources('vosupport::voenv', $vo_environments, $defaults)
-  
+  class { 'vosupport::vo_environment':
+    voenvdefaults => $vo_environments,
+  }
+
   file { '/usr/etc/globus-user-env.sh': ensure => present, }
+
+  file { 'grid-env-funcs.sh':
+    path   => '/usr/libexec/grid-env-funcs.sh',
+    source => 'puppet:///modules/vosupport/grid-env-funcs.sh',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+  }
+
+  file { 'clean-grid-env-funcs.sh':
+    path   => '/usr/libexec/clean-grid-env-funcs.sh',
+    source => 'puppet:///modules/vosupport/clean-grid-env-funcs.sh',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+  }
 }
