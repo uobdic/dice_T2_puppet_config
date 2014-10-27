@@ -32,7 +32,7 @@ class site::submit_node (
     cvmfs_mounts      => $cvmfs_mounts,
   }
 
-  package { 'emi-wn': ensure => latest, }
+  package { 'emi-ui': ensure => latest, }
 
   package { 'HEP_OSlibs_SL6': ensure => installed }
 
