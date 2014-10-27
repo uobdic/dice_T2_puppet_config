@@ -11,7 +11,7 @@ class site::base (
   ,) {
   # defaults for files
   File {
-    mode   => 644,
+    mode   => '0644',
     owner  => 'root',
     group  => 'root',
     ensure => 'present',
@@ -34,11 +34,11 @@ class site::base (
   }
 
   # send configuration files
-  file { '/etc/puppet/puppet.conf':
-    notify  => Service['puppet'],
-    content => template('site/puppet.conf.erb'),
-    require => Package['puppet'],
-  }
+  #  file { '/etc/puppet/puppet.conf':
+  #    notify  => Service['puppet'],
+  #    content => template('site/puppet.conf.erb'),
+  #    require => Package['puppet'],
+  #  }
 
   file { '/etc/puppet/auth.conf':
     notify  => Service['puppet'],
@@ -62,6 +62,10 @@ class site::base (
 
   package { $remove_packages: ensure => absent, }
 
+  if ($cluster == 'DICE') {
+
+  }
+
   # bash_profile for useful aliases etc.
   file { '/root/.bash_profile':
     source  => 'puppet:///modules/site/bash_profile',
@@ -80,5 +84,25 @@ class site::base (
 
     # for now this is needed
     motd::file { 'mine': template => "site/motd_${cluster}.erb" }
+
+    service { "rsyslog":
+      ensure  => 'running',
+      enable  => true,
+      require => Package['rsyslog'],
+    }
+
+    package { 'rsyslog': ensure => installed }
+
+    if 'vm-37-' in "$::fqdn" {
+      $rsyslog_file = 'puppet:///modules/site/rsyslog.conf.central_log'
+    } else {
+      $rsyslog_file = 'puppet:///modules/site/rsyslog.conf'
+    }
+
+    file { '/etc/rsyslog.conf':
+      notify => Service['rsyslog'],
+      source => $rsyslog_file,
+    }
+
   }
 }
