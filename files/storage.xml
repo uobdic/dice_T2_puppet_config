@@ -27,6 +27,6 @@
         <pfn-to-lfn protocol="xroot" path-match=".*\:1094(.*)" result="$1"/>
     <!-- End xroot -->
     <!-- Begin xroot fallback-->
-        <lfn-to-pfn protocol="xrdfall" destination-match=".*" path-match="/+store/(.*)" result="root://xrootd.ba.infn.it//store/$1"/>
+        <lfn-to-pfn protocol="xrootdfallback" destination-match=".*" path-match="/+store/(.*)" result="root:///xrootd-cms.infn.it//store/$1"/>
     <!-- End xroot fallback-->
 </storage-mapping>
