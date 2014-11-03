@@ -33,7 +33,7 @@ class site::submit_node (
     cvmfs_mounts      => $cvmfs_mounts,
   }
 
-  package { 'emi-ui': ensure => latest, }
+  package { ['emi-ui', 'krb5-workstation']: ensure => latest, }
 
   package { 'HEP_OSlibs_SL6': ensure => installed }
 
@@ -44,7 +44,7 @@ class site::submit_node (
   file { '/condor/bin/condor_submit':
     ensure  => present,
     content => template('site/condor_submit.erb'),
-    mode => 'a+rx,ug+rw',
+    mode    => 'a+rx,ug+rw',
   }
 
   # put script to set /condor/bin before any other path in $PATH
