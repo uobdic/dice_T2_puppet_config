@@ -33,7 +33,7 @@ test -f /lib/modules/`uname -r`/gpfs.has.been.recompiled && exit 0
 
 /bin/cp -p /etc/redhat-release{,.orig}
 
-echo "Red Hat Enterprise Linux AS release 5" > /etc/redhat-release
+echo "Red Hat Enterprise Linux AS release 6" > /etc/redhat-release
 export SHARKCLONEROOT=/usr/lpp/mmfs/src
 cd $SHARKCLONEROOT
 make clean
