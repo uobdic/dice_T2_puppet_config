@@ -43,7 +43,7 @@ make Autoconfig
 # normal/good output: 
 # cd config; ./configure; exit $? || exit 1;
 
-make World 
+make World jobs=`nproc`
 make InstallImages
 
 # Restore SL not RH
