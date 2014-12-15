@@ -7,9 +7,9 @@
    <!-- End LoadTest07 -->
 	   
    <!-- General Direct -->
+   <lfn-to-pfn protocol="direct" path-match="/+store/test/xrootd/T2_UK_SGrid_Bristol/store/(.*)" result="/gpfs_phys/storm/cms/$1" />
    <lfn-to-pfn protocol="direct" path-match="/+store/(.*)" result="/gpfs_phys/storm/cms/$1" />
    <pfn-to-lfn protocol="direct" path-match=".*/+gpfs_phys/storm/cms/(.*)" result="/store/$1" />
-   <lfn-to-pfn protocol="direct" path-match="/+store/test/xrootd/T2_UK_SGrid_Bristol/store/(.*)" result="/gpfs_phys/storm/cms/$1" />
    <!-- End General Direct -->
 
    <!-- SRM2-->
@@ -23,7 +23,7 @@
    <!-- End File -->
    
    <!-- Begin xroot fallback-->
-   <lfn-to-pfn protocol="xrootdfallback" destination-match=".*" path-match="/+store/(.*)" result="root:///xrootd-cms.infn.it//store/$1"/>
+   <lfn-to-pfn protocol="xrootdfallback" destination-match=".*" path-match="/+store/(.*)" result="root://xrootd-cms.infn.it//store/$1"/>
    <!-- End xroot fallback-->
 </storage-mapping>
 
