@@ -1,15 +1,22 @@
 <site-local-config>
   <site name="T2_UK_SGrid_Bristol">
-    <event-data>
-      <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=xroot"/>
-      <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=xrootdfallback"/>
+	<event-data>
+         <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=file"/>
+         <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=xrootdfallback"/>
     </event-data>
     <local-stage-out>
-      <command value="srmv2-lcg"/>
-      <!-- <option value="-debug"/> -->
-      <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=srmv2"/>
-      <se-name value="heplnx204.pp.rl.ac.uk"/>
+         <command value="srmv2-lcg"/>
+         <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=srmv2"/>
+         <se-name value="lcgse02.phy.bris.ac.uk"/>
+         <phedex-node value="T2_UK_SGrid_Bristol"/>
     </local-stage-out>
+    <fallback-stage-out>
+      <se-name value="heplnx204.pp.rl.ac.uk"/>
+      <lfn-prefix value="srm://heplnx204.pp.rl.ac.uk:8443/srm/managerv2?SFN=/pnfs/pp.rl.ac.uk/data/cms"/>
+      <command value="srmv2-lcg"/>
+      <option value="-Dsrmv2 -b"/>
+      <phedex-node value="T2_UK_SGrid_RALPP"/>
+    </fallback-stage-out>
     <calib-data>
       <catalog url=""/> <!-- for old CMSSW -->
       <frontier-connect>
