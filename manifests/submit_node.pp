@@ -23,23 +23,28 @@ class site::submit_node (
   }
   ,
   $cvmfs_quota_limit = $site::params::cvmfs_quota_limit,
-  $cvmfs_server_url  = $site::params::cvmfs_server_url,) {
-  class { 'concat::setup' : }
-  class { 'site::cvmfs_config':
-    cvmfs_quota_limit => $cvmfs_quota_limit,
-    cvmfs_http_proxy  => $cvmfs_http_proxy,
-    cvmfs_server_url  => $cvmfs_server_url,
-    cvmfs_cache_base  => $cvmfs_cache_base,
-    cvmfs_mounts      => $cvmfs_mounts,
+  $cvmfs_server_url  = $site::params::cvmfs_server_url,
+  $deploy_cvmfs      = true,
+  $deploy_emi_ui     = true,) {
+  if $deploy_cvmfs == true {
+    class { 'concat::setup': }
+
+    class { 'site::cvmfs_config':
+      cvmfs_quota_limit => $cvmfs_quota_limit,
+      cvmfs_http_proxy  => $cvmfs_http_proxy,
+      cvmfs_server_url  => $cvmfs_server_url,
+      cvmfs_cache_base  => $cvmfs_cache_base,
+      cvmfs_mounts      => $cvmfs_mounts,
+    }
   }
 
-  package { ['emi-ui', 'krb5-workstation']: ensure => latest, }
+  if $deploy_emi_ui == true {
+    package { ['emi-ui', 'krb5-workstation']: ensure => latest, }
 
-  package { 'HEP_OSlibs_SL6': ensure => installed }
+    package { 'HEP_OSlibs_SL6': ensure => installed }
+  }
 
-  file { [
-    '/condor',
-    '/condor/bin']: ensure => directory }
+  file { ['/condor', '/condor/bin']: ensure => directory }
 
   file { '/condor/bin/condor_submit':
     ensure  => present,
