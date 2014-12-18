@@ -1,3 +1,4 @@
+#
 class site::basic_user (
   $user_accounts = $site::params::user_accounts,
   $user_groups   = $site::params::user_groups,) inherits site::params {
@@ -16,6 +17,6 @@ class site::basic_user (
     accounts => $user_accounts,
   }
 
-  Package['pam_krb5'] -> File['/etc/krb5.conf'] -> Class['site::create_groups'] 
+  Package['pam_krb5'] -> File['/etc/krb5.conf'] -> Class['site::create_groups']
   -> Class['site::create_accounts']
 }

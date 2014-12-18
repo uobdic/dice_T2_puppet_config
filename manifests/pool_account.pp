@@ -12,7 +12,7 @@
 #    primary_group => 'cmspilot',
 #    groups        => [ 'cms'],
 #  }
-define pool_account (
+define site::pool_account (
   $username                = $title,
   $password                = '*NP*',
   $shell                   = '/bin/bash',
@@ -22,7 +22,7 @@ define pool_account (
   $uid                     = undef,
   $groups                  = [],
   $ensure                  = present,
-  $comment                 = "mapped user for group $title",
+  $comment                 = "mapped user for group ${title}",
   $create_gridmapdir_entry = false) {
   case $ensure {
     present : {
@@ -60,7 +60,7 @@ define pool_account (
     path   => $home_dir,
     owner  => $dir_owner,
     group  => $dir_group,
-    mode   => 0700;
+    mode   => '0700';
   }
 
   if $create_gridmapdir_entry {
