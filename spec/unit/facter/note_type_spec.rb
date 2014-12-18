@@ -43,5 +43,9 @@ describe 'Facter::Util::Fact' do
       Facter.fact(:fqdn).stubs(:value).returns('hd-37-00.dice.priv')
       Facter.fact(:node_type).value.should == 'worker'
     end
+    it 'bc-37-00.dice.priv' do
+      Facter.fact(:fqdn).stubs(:value).returns('bc-37-00.dice.priv')
+      Facter.fact(:node_type).value.should == 'couchdb-node'
+    end
   end
 end
