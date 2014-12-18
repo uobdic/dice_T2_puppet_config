@@ -33,7 +33,7 @@ class site::network (
     }
 
     # this is going into the network config
-    if $domain != '' and $search != [] {
+    if $::domain != '' and $search != [] {
       fail('The "domain" and "search" parameters are mutually exclusive.')
     }
 

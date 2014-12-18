@@ -40,6 +40,6 @@ class site::create_grid_pool_accounts (
   $defaults_other = {
     'manage_home' => $create_home_directories,
   }
-  create_resources('grid_pool_accounts::pool_account', $other_grid_accounts, 
+  create_resources('grid_pool_accounts::pool_account', $other_grid_accounts,
   $defaults_other)
 }

@@ -1,28 +1,45 @@
+#
 class site::basic (
-  $cluster = $site::params::cluster,
-  $yum_repositories = {},
-  $nameserver = [],
-  $search = [],
-  $packages = {
-    'nano' => {},
-    'yum' => {},
-    'git' => {},
-    'wget' => {},
-    'mlocate' => {},
-    'bind-utils' => {},
-  },
-  $firewall_rules = {},
-  $use_firewall = false,
-) inherits site::params {
-
-  File {#defaults for files
-    mode   => 644,
+  $cluster          = $site::params::cluster,
+  $yum_repositories = {
+  }
+  ,
+  $nameserver       = [],
+  $search           = [],
+  $packages         = {
+    'nano'       => {
+    }
+    ,
+    'yum'        => {
+    }
+    ,
+    'git'        => {
+    }
+    ,
+    'wget'       => {
+    }
+    ,
+    'mlocate'    => {
+    }
+    ,
+    'bind-utils' => {
+    }
+    ,
+  }
+  ,
+  $firewall_rules   = {
+  }
+  ,
+  $use_firewall     = false,) inherits site::params {
+  File { # defaults for files
+    mode   => '644',
     owner  => 'root',
     group  => 'root',
     ensure => 'present',
   }
 
-  class{'site::puppet': }
+  class { 'site::puppet':
+  }
 
   #############################
   # yum repositories
@@ -51,7 +68,6 @@ class site::basic (
     search     => $search,
   }
 
-
   if $use_firewall == true {
     class { 'site::firewall': rules => $firewall_rules, }
   }
@@ -62,8 +78,9 @@ class site::basic (
       source => 'puppet:///modules/site/rc.local',
     }
 
-    file {'/etc/hosts':
+    file { '/etc/hosts':
       ensure => present,
-      source => 'puppet:///modules/site/hosts',}
+      source => 'puppet:///modules/site/hosts',
+    }
   }
 }

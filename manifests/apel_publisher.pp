@@ -1,20 +1,19 @@
+# Class: dice_T2_puppet_config::apel_publisher
+#
+# Parameters: none
+#
+# Actions:
+#
+# Requires: see Modulefile
+#
+# Sample Usage:
+#
 class site::apel_publisher (
   $site_name                 = 'UKI-SOUTHGRID-XXX-HEP',
   $mysql_root_password       = 'changeme',
   $mysql_backup_folder       = '/tmp/mysql_backup',
   $mysql_apel_password       = 'pleasechangeme',
-  $list_of_apel_parser_hosts = [
-    ],) inherits site::params {
-  yumhelper::modify { 'enable-epel':
-    repository => 'epel',
-    enable     => true,
-  }
-
-  yumhelper::modify { 'disable-epel':
-    repository => 'epel',
-    enable     => false,
-  }
-
+  $list_of_apel_parser_hosts = [],) inherits site::params {
   class { 'apelpublisher::repositories':
   }
 
@@ -36,12 +35,14 @@ class site::apel_publisher (
   }
 
   class { 'apelpublisher::cron':
-    cron_hours => 2,
+    cron_hours   => 2,
     cron_minutes => 42,
   }
 
-  Class['apelpublisher::repositories'] -> Class['apelpublisher::install'] -> Class['apelpublisher::create_database'] -> 
+  Class['apelpublisher::repositories'] -> Class['apelpublisher::install'] ->
+  Class['apelpublisher::create_database'] ->
   Class['apelpublisher::config'] -> Class['apelpublisher::cron']
 
-  Yumhelper::Modify['enable-epel'] -> Class['apelpublisher::install'] -> Yumhelper::Modify['disable-epel']
+  Yumhelper::Modify['enable-epel'] -> Class['apelpublisher::install'] ->
+  Yumhelper::Modify['disable-epel']
 }

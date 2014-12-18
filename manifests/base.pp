@@ -85,7 +85,7 @@ class site::base (
     # for now this is needed
     motd::file { 'mine': template => "site/motd_${cluster}.erb" }
 
-    service { "rsyslog":
+    service { 'rsyslog':
       ensure  => 'running',
       enable  => true,
       require => Package['rsyslog'],
@@ -93,7 +93,7 @@ class site::base (
 
     package { 'rsyslog': ensure => installed }
 
-    if 'vm-37-' in "$::fqdn" {
+    if 'vm-37-' in $::fqdn {
       $rsyslog_file = 'puppet:///modules/site/rsyslog.conf.central_log'
     } else {
       $rsyslog_file = 'puppet:///modules/site/rsyslog.conf'

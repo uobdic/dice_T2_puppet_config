@@ -1,3 +1,4 @@
+#
 class site::create_accounts ($accounts = undef) {
   $defaults = {
     'ensure' => present,
