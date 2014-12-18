@@ -6,7 +6,11 @@
 +skip: .
 << ./storage >>
 +skip: .
+<< ./gpfs >>
++skip: .
 << ./gpfs_phys >>
++skip: .
+<< ./hdfs >>
 +skip: .
 << ./usr>>
 +skip: .

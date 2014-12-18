@@ -1,4 +1,5 @@
-class site::create_groups ($groups = $site::params::user_groups) inherits site::params {
+class site::create_groups (
+  $groups = $site::params::user_groups) inherits site::params {
   $defaults = {
     'ensure' => present,
   }

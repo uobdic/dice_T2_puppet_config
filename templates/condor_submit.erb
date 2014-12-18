@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+# condor submit wrapper script
+from subprocess import call
+import sys
+import getpass
+
+group_map = {
+             'hep' : ['phxlk', 'ec6821', 'phjaj'],
+             'astro' : ['phajy'],
+             'jonas' : [],
+             }
+
+def main():
+    args = sys.argv
+    # replace executable
+    args[0] = '/usr/bin/condor_submit'
+    job_file = args[1]
+    # remove job file ( we will add it later)
+    args.remove(job_file)
+    # inject arguments here
+    user = getpass.getuser()
+    args.append('-append')
+    args.append('accounting_group = ' + get_accounting_group(user))
+    args.append('-append')
+    args.append('accounting_group_user = ' + user )
+    # add job file again
+    args.append(job_file)
+    call(args)
+
+def get_accounting_group(user):
+    base = 'group_physics'
+    result = base
+    
+    for group, users in group_map.iteritems():
+        if user in users:
+            result = base + '.' + group
+    return result
+
+if __name__ == '__main__':
+    main()

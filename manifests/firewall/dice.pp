@@ -6,11 +6,18 @@ class site::firewall::dice {
     source => '92.234.12.153/16',
   }
 
-  firewall { '101 SSH from VPN':
+  firewall { '101 SSH from WIFI 1':
     proto  => 'tcp',
     action => 'accept',
     dport  => 22,
     source => '172.21.0.0/16',
+  }
+
+  firewall { '101 SSH from WIFI 2':
+    proto  => 'tcp',
+    action => 'accept',
+    dport  => 22,
+    source => '172.23.0.0/16',
   }
 
   firewall { '102 Trust UoB network':
@@ -22,7 +29,7 @@ class site::firewall::dice {
   firewall { '103 Trust internal network':
     proto  => 'all',
     action => 'accept',
-    source => '10.132.0.0/16',
+    source => '10.129.5.0/24',
   }
 
   firewall { '104 drop all-systems.mcast.net':
