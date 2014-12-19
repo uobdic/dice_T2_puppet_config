@@ -53,7 +53,7 @@ class site::submit_node (
   }
 
   # put script to set /condor/bin before any other path in $PATH
-  file { '/etc/profile.d/condor.sh':
+  file { '/etc/profile.d/zzzzz_condor.sh':
     ensure => present,
     source => 'puppet:///modules/site/condor.sh',
   }
