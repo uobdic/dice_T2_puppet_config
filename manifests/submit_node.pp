@@ -25,7 +25,11 @@ class site::submit_node (
   $cvmfs_quota_limit = $site::params::cvmfs_quota_limit,
   $cvmfs_server_url  = $site::params::cvmfs_server_url,
   $deploy_cvmfs      = true,
-  $deploy_emi_ui     = true,) {
+  $deploy_emi_ui     = true,
+  $group_map         = {
+    'group1' => ['user1', 'user2'],
+  }
+) {
   if $deploy_cvmfs == true {
     class { 'concat::setup': }
 
@@ -46,6 +50,7 @@ class site::submit_node (
 
   file { ['/condor', '/condor/bin']: ensure => directory }
 
+  $condor_group_hash = convert_hash_to_json($group_map)
   file { '/condor/bin/condor_submit':
     ensure  => present,
     content => template('site/condor_submit.erb'),

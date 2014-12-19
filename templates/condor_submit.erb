@@ -4,11 +4,7 @@ from subprocess import call
 import sys
 import getpass
 
-group_map = {
-             'hep' : ['phxlk', 'ec6821', 'phjaj'],
-             'astro' : ['phajy'],
-             'jonas' : [],
-             }
+group_map = <%= @condor_group_hash -%>
 
 def main():
     args = sys.argv
