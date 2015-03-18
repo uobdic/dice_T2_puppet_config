@@ -35,6 +35,7 @@ class site::create_grid_pool_accounts (
   create_resources('grid_pool_accounts::pool_group', $grid_groups)
   $defaults = {
     'create_home_dir' => $create_home_directories,
+    'grid_users_conf' => false,
   }
   create_resources('grid_pool_accounts', $grid_accounts, $defaults)
   $defaults_other = {
