@@ -5,13 +5,16 @@
 	<projects>
 		<project>apelpublisher</project>
 		<project>hep-cvmfs</project>
+		<project>lcgdm</project>
 		<project>puppet-account</project>
 		<project>puppet-cvmfs</project>
 		<project>puppet-dhcp</project>
+		<project>puppet-dmlite</project>
 		<project>puppet-dns</project>
 		<project>puppet-frontiersquid</project>
 		<project>puppet-motd</project>
 		<project>puppetlabs-firewall</project>
+		<project>puppetlabs-mysql</project>
 		<project>puppetlabs-stdlib</project>
 	</projects>
 	<buildSpec>
