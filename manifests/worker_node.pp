@@ -33,13 +33,8 @@ class site::worker_node (
   # special configuration for grid connected worker nodes
   if ($is_arc_ce_worker_node == true or $is_tier_two_worker_node == true) {
     # which files to use for site configuration
-    if ($is_arc_ce_worker_node) {
-      $site_local_config = 'puppet:///modules/site/site-local-config.T2.xml'
-      $storage_xml       = 'puppet:///modules/site/storage.T2.xml'
-    } else { # tier two
-      $site_local_config = 'puppet:///modules/site/site-local-config.T2.xml'
-      $storage_xml       = 'puppet:///modules/site/storage.T2.xml'
-    }
+      $site_local_config = 'puppet:///modules/site/site-local-config.xml'
+      $storage_xml       = 'puppet:///modules/site/storage.xml'
   }
 
   ################################################
