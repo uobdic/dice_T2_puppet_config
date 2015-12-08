@@ -6,8 +6,8 @@
          <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=xrootdfallback"/>
     </event-data>
     <local-stage-out>
-         <command value="xrdcp"/>
-         <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=xrootd"/>
+         <command value="gfal-copy"/>
+         <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=gridftp"/>
          <se-name value="lcgse01.phy.bris.ac.uk"/>
          <phedex-node value="T2_UK_SGrid_Bristol"/>
     </local-stage-out>
