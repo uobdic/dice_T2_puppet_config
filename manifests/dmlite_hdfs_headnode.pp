@@ -1,7 +1,5 @@
 #
 class site::dmlite_hdfs_headnode (
-  $hdfs_namenode    = 'jt-37-00.dice.priv',
-  $hdfs_port        = 8020,
   $mysql_root_pass  = 'PASS',
   $mysql_dpm_pass   = 'MYSQLPASS',
   $mysql_dpm_user   = 'dpmmgr',
@@ -9,7 +7,7 @@ class site::dmlite_hdfs_headnode (
   $token_password   = 'TOKEN_PASSWORD',
   $localdomain      = 'phy.bris.ac.uk',
   $volist           = ['atlas', 'cms', 'dteam', 'ops', 'lhcb', 'alice'],
-  #  $disk_nodes       = "${::fqdn}",
+#  $disk_nodes       = "${::fqdn}",
   $xrootd_sharedkey = 'A32TO64CHARACTERKEYTESTTESTTESTTEST',
   $debug            = false,
   $local_db         = true) {
@@ -54,87 +52,101 @@ class site::dmlite_hdfs_headnode (
   #
   # The firewall configuration
   #
-  firewall { '950 allow http and https':
+  firewall { '050 allow http and https':
     proto  => 'tcp',
     dport  => [80, 443],
     action => 'accept'
   }
 
-  firewall { '950 allow rfio':
+  firewall { '050 allow rfio':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '5001',
     action => 'accept'
   }
 
-  firewall { '950 allow rfio range':
+  firewall { '050 allow rfio range':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '20000-25000',
     action => 'accept'
   }
 
-  firewall { '950 allow gridftp control':
+  firewall { '050 allow gridftp control':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '2811',
     action => 'accept'
   }
 
-  firewall { '950 allow gridftp range':
+  firewall { '050 allow gridftp range':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '20000-25000',
     action => 'accept'
   }
 
-  firewall { '950 allow srmv2.2':
+  firewall { '050 allow srmv2.2':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '8446',
     action => 'accept'
   }
 
-  firewall { '950 allow xrootd':
+  firewall { '050 allow xrootd':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '1095',
     action => 'accept'
   }
 
-  firewall { '950 allow cmsd':
+  firewall { '050 allow cmsd':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '1094',
     action => 'accept'
   }
 
-  firewall { '950 allow DPNS':
+  firewall { '050 allow DPNS':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '5010',
     action => 'accept'
   }
 
-  firewall { '950 allow DPM':
+  firewall { '050 allow DPM':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '5015',
     action => 'accept'
   }
 
-  firewall { '950 allow bdii':
+  firewall { '050 allow bdii':
     state  => 'NEW',
     proto  => 'tcp',
     dport  => '2170',
     action => 'accept'
   }
 
-  firewall { '950 allow mysql':
-    state  => 'NEW',
-    proto  => 'tcp',
-    dport  => '3306',
-    action => 'accept'
+  firewall { "050 allow mysql":
+    state  => "NEW",
+    proto  => "tcp",
+    dport  => "3306",
+    action => "accept"
+  }
+
+  firewall { "050 allow xrootd atlas":
+    state  => "NEW",
+    proto  => "tcp",
+    dport  => "11000",
+    action => "accept"
+  }
+
+  firewall { "050 allow xrootd cms":
+    state  => "NEW",
+    proto  => "tcp",
+    dport  => "11001",
+    action => "accept"
   }
 
   #
@@ -166,15 +178,13 @@ class site::dmlite_hdfs_headnode (
   site::dmlite::grant_mysql_access { $gateways:
     db_user => $db_user,
     db_pass => $db_pass,
-  }
-
-  #  $gma_defaults = {
-  #    'db_user' => $mysql_dpm_user,
-  #    'db_pass' => $mysql_dpm_pass
-  #  }
-  #
-  #  create_resources(site::dmlite::grant_mysql_access,
-  #  $gateways, $gma_defaults)
+   }
+#  $gma_defaults = {
+#    'db_user' => $mysql_dpm_user,
+#    'db_pass' => $mysql_dpm_pass
+#  }
+#
+#  create_resources(site::dmlite::grant_mysql_access, $gateways, $gma_defaults)
 
   #
   # DPM and DPNS daemon configuration.
@@ -314,12 +324,13 @@ class site::dmlite_hdfs_headnode (
     token_password  => $token_password,
     mysql_username  => $db_user,
     mysql_password  => $db_pass,
-    hdfs_namenode   => $hdfs_namenode,
-    hdfs_port       => $hdfs_port,
+    hdfs_namenode   => 'jt-37-00.dice.priv',
+    hdfs_port       => 8020,
     hdfs_user       => 'dpmmgr',
     enable_io       => true,
     hdfs_tmp_folder => '/tmp',
     hdfs_gateway    => join($gateways, ','),
+    hdfs_replication=> 2,
   }
 
   #
@@ -338,7 +349,8 @@ class site::dmlite_hdfs_headnode (
   class { 'dmlite::gridftp':
     dpmhost      => "${::fqdn}",
     remote_nodes => $remote_nodes,
-    enable_hdfs  => true
+    enable_hdfs  => true,
+    log_level    => 'INFO',
   }
 
   # The XrootD configuration is a bit more complicated and
@@ -353,12 +365,37 @@ class site::dmlite_hdfs_headnode (
     xrootd_group => 'dpmmgr'
   }
 
+  $atlas_fed = {
+    name           => 'fedredir_atlas',
+    fed_host       => 'atlas-xrd-uk.cern.ch',
+    xrootd_port    => 1094,
+    cmsd_port      => 1098,
+    local_port     => 11000,
+    namelib_prefix => "/dpm/${localdomain}/home/atlas",
+    namelib        => "XrdOucName2NameLFC.so pssorigin=localhost sitename=UKI-SOUTHGRID-BRIS-HEP",
+    paths          => [ '/atlas' ]
+  }
+
+  $cms_fed = {
+    name           => 'fedredir_cms',
+    fed_host       => 'xrootd-cms.infn.it',
+    xrootd_port    => 1094,
+    cmsd_port      => 1213,
+    local_port     => 11001,
+    namelib_prefix => "/dpm/${localdomain}/home/cms",
+    namelib        => "libXrdCmsTfc.so file:/etc/xrootd/storage.xml?protocol=direct",
+    paths          => [ '/store' ]
+  }
+
   class { 'dmlite::xrootd':
     nodetype             => ['head'],
     domain               => "${localdomain}",
     dpm_xrootd_debug     => $debug,
     dpm_xrootd_sharedkey => "${xrootd_sharedkey}",
     enable_hdfs          => true,
+    xrd_report           => "xrootd.t2.ucsd.edu:9931,atl-prod05.slac.stanford.edu:9931 every 60s all sync",
+    xrootd_monitor       => "all flush 30s ident 5m fstat 60 lfn ops ssq xfr 5 window 5s dest fstat info user redir CMS-AAA-EU-COLLECTOR.cern.ch:9330 dest fstat info user redir atlas-fax-eu-collector.cern.ch:9330",
+    dpm_xrootd_fedredirs => { "atlas" => $atlas_fed, "cms" => $cms_fed },
   }
 
   # BDII
@@ -367,8 +404,11 @@ class site::dmlite_hdfs_headnode (
   # DPM GIP config
   class { 'lcgdm::bdii::dpm':
     sitename => 'UKI-SOUTHGRID-BRIS-HEP',
-    vos      => $volist
+    vos      => $volist,
+    hdfs     => true,
   }
+  # make sure user ldap is created
+  User <| title == ldap |>
 
   # memcache configuration
   Class[Dmlite::Plugins::Memcache::Install] ~> Class[Dmlite::Dav::Service]
@@ -392,10 +432,10 @@ class site::dmlite_hdfs_headnode (
   #
   class { 'dmlite::shell':
   } ->
-  exec { 'configurepool':
+  exec { "configurepool":
     path        => '/bin:/sbin:/usr/bin:/usr/sbin',
     environment => ['LD_LIBRARY_PATH=/usr/lib/jvm/java/jre/lib/amd64/server/'],
-    command     => "dmlite-shell -e 'pooladd  hdfs_pool hdfs';dmlite-shell -e 'poolmodify hdfs_pool hostname ${hdfs_namenode}';dmlite-shell -e 'poolmodify hdfs_pool port ${hdfs_port}'; dmlite-shell -e 'poolmodify hdfs_pool username dpmmgr'; dmlite-shell -e 'poolmodify hdfs_pool mode rw'",
+    command     => "dmlite-shell -e 'pooladd  hdfs_pool hdfs';dmlite-shell -e 'poolmodify hdfs_pool hostname jt-37-00.dice.priv'; dmlite-shell -e 'poolmodify hdfs_pool username dpmmgr'; dmlite-shell -e 'poolmodify hdfs_pool mode rw'",
     unless      => "dmlite-shell -e 'poolinfo rw",
     require     => Package['dmlite-shell'],
   }
