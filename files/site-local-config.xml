@@ -1,13 +1,14 @@
 <site-local-config>
   <site name="T2_UK_SGrid_Bristol">
-	<event-data>
+    <event-data>
+	  <!-- for old CMSSW -->
          <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=file"/>
          <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=xrootdfallback"/>
     </event-data>
     <local-stage-out>
-         <command value="srmv2-lcg"/>
-         <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=srmv2"/>
-         <se-name value="lcgse02.phy.bris.ac.uk"/>
+         <command value="xrdcp"/>
+         <catalog url="trivialcatalog_file:/cvmfs/cms.cern.ch/SITECONF/local/PhEDEx/storage.xml?protocol=xrootd"/>
+         <se-name value="lcgse01.phy.bris.ac.uk"/>
          <phedex-node value="T2_UK_SGrid_Bristol"/>
     </local-stage-out>
     <fallback-stage-out>
@@ -36,3 +37,4 @@
   </source-config>
   </site>
 </site-local-config>
+
