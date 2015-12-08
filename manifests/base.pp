@@ -28,8 +28,8 @@ class site::base (
 
   # ensure the service is running and in chkconfig
   service { 'puppet':
-    ensure  => 'running',
-    enable  => true,
+    ensure  => 'stopped',
+    enable  => false,
     require => Package['puppet'],
   }
 
