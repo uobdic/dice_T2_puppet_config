@@ -6,17 +6,15 @@ class site::firewall::dice {
     source => '92.234.12.153/16',
   }
 
-  firewall { '101 SSH from WIFI 1':
-    proto  => 'tcp',
+  firewall { '101 allow WIFI 1':
+    proto  => 'all',
     action => 'accept',
-    dport  => 22,
     source => '172.21.0.0/16',
   }
 
-  firewall { '101 SSH from WIFI 2':
-    proto  => 'tcp',
+  firewall { '101 allow WIFI 2':
+    proto  => 'all',
     action => 'accept',
-    dport  => 22,
     source => '172.23.0.0/16',
   }
 
